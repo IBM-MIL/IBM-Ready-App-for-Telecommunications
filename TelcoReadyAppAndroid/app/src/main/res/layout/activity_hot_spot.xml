@@ -1,0 +1,221 @@
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:theme="@style/HotSpotTheme"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56dp"
+            android:layout_marginStart="56dp"
+            android:text="@string/app_name"
+            android:textColor="@color/dark_orange"
+            android:textSize="14sp" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-15dp">
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/hotspot_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/searching"
+                android:textSize="20sp" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                app:mlpb_enable_circle_background="false" />
+
+            <LinearLayout
+                android:id="@+id/content_area"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- transparent view on top of map fragment to deal with touch event interceptions -->
+                <RelativeLayout
+                    android:id="@+id/map_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <fragment
+                        android:id="@+id/map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <!-- transparent view -->
+                    <View
+                        android:id="@+id/map_touchevent_capture_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                        android:id="@+id/verification_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAllCaps="true" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/location_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:contentDescription="@string/location_desc"
+                            android:src="@drawable/location" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                                android:id="@+id/hotspot_distance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="10dp"
+                                android:textColor="@color/orange"
+                                android:textSize="30sp" />
+
+                            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                                android:id="@+id/address_line1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/light_gray"
+                                android:textSize="12sp" />
+
+                            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                                android:id="@+id/address_line2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="16dp"
+                                android:textColor="@color/light_gray"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/gray_ae" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                            android:id="@+id/download_speed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/signal"
+                            android:drawableStart="@drawable/signal"
+                            android:textSize="20sp" />
+
+                        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                            android:id="@+id/sign_in_requirement"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:textColor="@color/light_gray"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                    <!-- divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/gray_ae" />
+
+                    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                        android:id="@+id/connection_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/connections"
+                        android:drawableStart="@drawable/connections"
+                        android:textSize="20sp" />
+
+                    <!-- divider -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/gray_ae" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/directions"
+        android:visibility="gone"
+        app:borderWidth="0dp"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|right|end" />
+
+</android.support.design.widget.CoordinatorLayout>

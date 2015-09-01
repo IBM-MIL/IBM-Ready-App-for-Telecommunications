@@ -1,0 +1,20 @@
+ <!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+    android:background="@color/material_gray"
+    tools:context="com.ibm.mil.readyapps.telco.mytalk.TalkFragment">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_talk_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/recyclerView_bottom_padding" />
+
+</FrameLayout>

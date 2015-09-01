@@ -1,0 +1,1 @@
+include ':app', ':cafejava', ':MQA-Android-2.7.4'

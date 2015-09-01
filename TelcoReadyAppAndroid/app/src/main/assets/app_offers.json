@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Unlimited Facebook",
+    "body": "Unlimited Facebook offer description",
+    "icon": "social_dark_gray",
+    "type": 1,
+    "cost": 2.00,
+    "usage": 0.75,
+    "accept": "ACCEPT",
+    "snackbar": "Unlimited Facebook added",
+    "isAppOffer": true,
+    "isUnlimited": true,
+    "affectsBaseCost": true,
+    "appName": "Facebook"
+  },
+  {
+    "title": "Unlimited YouTube",
+    "body": "Unlimited YouTube offer description",
+    "icon": "video_dark_gray",
+    "type": 1,
+    "cost": 2.00,
+    "usage": 0.30,
+    "accept": "ACCEPT",
+    "snackbar": "Unlimited YouTube added",
+    "isAppOffer": true,
+    "isUnlimited": true,
+    "affectsBaseCost": true,
+    "appName": "YouTube"
+  },
+  {
+    "title": "Unlimited WhatsApp",
+    "body": "Unlimited WhatsApp offer description",
+    "icon": "social_dark_gray",
+    "type": 1,
+    "cost": 2.00,
+    "usage": 0.20,
+    "accept": "ACCEPT",
+    "snackbar": "Unlimited WhatsApp added",
+    "isAppOffer": true,
+    "isUnlimited": true,
+    "affectsBaseCost": true,
+    "appName": "WhatsApp"
+  }
+]

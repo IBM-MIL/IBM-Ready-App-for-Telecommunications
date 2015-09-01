@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/my_plan_cost_row"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/layout_left_margin"
+    android:paddingStart="@dimen/layout_left_margin"
+    android:paddingRight="15dp"
+    android:paddingEnd="15dp"
+    android:paddingTop="15dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/base_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/indigo"
+            android:textSize="24sp"
+            app:font="@string/roboto_regular"
+            />
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/base_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/base_cost"
+            android:text="@string/base_plan"
+            android:layout_toRightOf="@+id/base_cost"
+            android:layout_toEndOf="@+id/base_cost"
+            app:font="@string/roboto_regular"
+            />
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/addon_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/base_cost"
+            android:layout_toRightOf="@+id/base_text"
+            android:layout_toEndOf="@+id/base_text"
+            app:font="@string/roboto_regular"
+            />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/bottom_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separator_line_height"
+        android:layout_marginTop="@dimen/top_margin"
+        android:background="@color/light_gray" />
+
+</LinearLayout>

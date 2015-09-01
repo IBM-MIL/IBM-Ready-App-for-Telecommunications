@@ -1,0 +1,64 @@
+[
+  {
+    "title": "Recharge Data",
+    "body": "You have used up 90% of your data. Click \"Accept\" to recharge your data to avoid overage fees",
+    "icon": "recharge",
+    "type": 1,
+    "cost": 10.00,
+    "accept": "ACCEPT",
+    "snackbar": "1 GB data recharged for $10.00",
+    "isAppOffer": false,
+    "isUnlimited": false,
+    "affectsBaseCost": false
+  },
+  {
+    "title": "Unlimited Facebook",
+    "body": "We\'ve noticed you have been using Facebook a lot. Click \"Accept\" to add Unlimited Facebook to your base plan.",
+    "icon": "social_dark_gray",
+    "type": 1,
+    "cost": 2.00,
+    "usage": 0.75,
+    "accept": "ACCEPT",
+    "snackbar": "Unlimited Facebook added to base plan",
+    "isAppOffer": true,
+    "isUnlimited": true,
+    "affectsBaseCost": true,
+    "appName": "Facebook"
+  },
+  {
+    "title": "Unlimited Sundays",
+    "body": "We have noticed you use a lot of data on Sundays. Click \"Accept\" to add Unlimited Sundays to your base plan.",
+    "icon": "data",
+    "type": 1,
+    "cost": 5.00,
+    "accept": "ACCEPT",
+    "snackbar": "Unlimited Sundays added to base plan",
+    "isAppOffer": false,
+    "isUnlimited": false,
+    "affectsBaseCost": true
+  },
+  {
+    "title": "We Want to Thank You",
+    "body": "Being our customer pays off, here is a discount on your base plan this month. Enjoy!",
+    "icon": "heart",
+    "type": 0,
+    "cost": -5.00,
+    "accept": "ACCEPT",
+    "snackbar": "Base plan reduced by $5.00",
+    "isAppOffer": false,
+    "isUnlimited": false,
+    "affectsBaseCost": true
+  },
+  {
+    "title": "Increase Talk Plan",
+    "body": "You have been recharging your minutes regularly; would you like to increase your base plan by 100 minutes?",
+    "icon": "talk",
+    "type": 2,
+    "cost": 2.00,
+    "accept": "ACCEPT",
+    "snackbar": "Base plan increased by 100 minutes",
+    "isAppOffer": false,
+    "isUnlimited": false,
+    "affectsBaseCost": true
+  }
+]

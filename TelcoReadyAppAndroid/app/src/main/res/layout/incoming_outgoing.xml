@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/top_margin"
+    android:paddingLeft="@dimen/layout_left_margin"
+    android:paddingStart="@dimen/layout_left_margin"
+    android:paddingRight="@dimen/layout_right_margin"
+    android:paddingEnd="@dimen/layout_right_margin"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+        android:id="@+id/incoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/header_bottom_margin"
+        android:text="@string/incoming_header"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/header_size"
+        app:font="@string/roboto_medium"
+        />
+
+    <com.ibm.mil.readyapps.telco.views.TelcoUsageView
+        android:id="@+id/incomingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:bottomRightText=" "
+        app:image="@drawable/incall"
+        app:percentUsed="5"
+        />
+
+    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+        android:id="@+id/outgoing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/header_bottom_margin"
+        android:text="@string/outgoing_header"
+        android:textColor="@color/dark_gray"
+        android:textSize="@dimen/header_size"
+        app:font="@string/roboto_medium"
+        />
+
+    <com.ibm.mil.readyapps.telco.views.TelcoUsageView
+        android:id="@+id/outgoingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/usage_bottom_padding"
+        app:bottomRightText=" "
+        app:image="@drawable/outcall"
+        app:percentUsed="5"
+        />
+
+</LinearLayout>

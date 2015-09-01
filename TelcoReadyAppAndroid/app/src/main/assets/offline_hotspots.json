@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Wifi Hotspot 1",
+    "isVerified": false,
+    "downloadSpeed": 20,
+    "signInRequired": true,
+    "connections": 15
+  },
+  {
+    "name": "Wifi Hotspot 2",
+    "isVerified": true,
+    "downloadSpeed": 3,
+    "signInRequired": false,
+    "connections": 5
+  },
+  {
+    "name": "Wifi Hotspot 3",
+    "isVerified": false,
+    "downloadSpeed": 100,
+    "signInRequired": false,
+    "connections": 12
+  },
+  {
+    "name": "Wifi Hotspot 4",
+    "isVerified": true,
+    "downloadSpeed": 20,
+    "signInRequired": true,
+    "connections": 2
+  },
+  {
+    "name": "Wifi Hotspot 5",
+    "isVerified": true,
+    "downloadSpeed": 5,
+    "signInRequired": false,
+    "connections": 7
+  },
+  {
+    "name": "Wifi Hotspot 6",
+    "isVerified": false,
+    "downloadSpeed": 10,
+    "signInRequired": true,
+    "connections": 3
+  },
+  {
+    "name": "Wifi Hotspot 7",
+    "isVerified": false,
+    "downloadSpeed": 40,
+    "signInRequired": false,
+    "connections": 2
+  },
+  {
+    "name": "Wifi Hotspot 8",
+    "isVerified": true,
+    "downloadSpeed": 5,
+    "signInRequired": true,
+    "connections": 11
+  },
+  {
+    "name": "Wifi Hotspot 9",
+    "isVerified": true,
+    "downloadSpeed": 15,
+    "signInRequired": false,
+    "connections": 9
+  },
+  {
+    "name": "Wifi Hotspot 10",
+    "isVerified": false,
+    "downloadSpeed": 40,
+    "signInRequired": true,
+    "connections": 13
+  }
+]

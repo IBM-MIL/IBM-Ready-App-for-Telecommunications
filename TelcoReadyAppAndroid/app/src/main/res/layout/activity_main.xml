@@ -1,0 +1,140 @@
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coordinator_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/Theme.AppCompat.Light">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/app_name"
+                        android:textColor="@color/dark_indigo"
+                        app:font="@string/roboto_medium"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                        android:id="@+id/current_plan_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        app:font="@string/roboto_light"
+                        />
+
+                    <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/month"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        app:font="@string/roboto_light"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <!-- icons for each tab -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <!-- temporary -->
+            <ImageView
+                android:id="@+id/plan_tab_image"
+                android:contentDescription="@string/con_desc_my_plan_tab"
+                style="@style/TabImages"
+                android:src="@drawable/plan_white"
+                />
+
+            <ImageView
+                android:id="@+id/data_tab_image"
+                android:contentDescription="@string/con_desc_my_data_tab"
+                style="@style/TabImages"
+                android:src="@drawable/data_white" />
+
+            <ImageView
+                android:id="@+id/talk_tab_image"
+                android:contentDescription="@string/con_desc_my_talk_tab"
+                style="@style/TabImages"
+                android:src="@drawable/talk_white" />
+
+            <ImageView
+                android:id="@+id/text_tab_image"
+                android:contentDescription="@string/con_desc_my_text_tab"
+                style="@style/TabImages"
+                android:src="@drawable/text_white"
+                />
+
+        </LinearLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-10dp"
+            app:tabGravity="fill"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/main_activity_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:borderWidth="0dp" />
+    <!-- fixes bug on older versions -->
+
+</android.support.design.widget.CoordinatorLayout>

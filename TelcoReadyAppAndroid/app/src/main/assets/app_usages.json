@@ -1,0 +1,32 @@
+[
+  {
+    "appName": "Facebook",
+    "imageName": "social_dark_gray",
+    "seekBarProgress": 50,
+    "type": 1,
+    "cost": 2.00,
+    "used": 0.75,
+    "limit": 2,
+    "isUnlimited": false
+  },
+  {
+    "appName": "YouTube",
+    "imageName": "video_dark_gray",
+    "seekBarProgress": 10,
+    "type": 1,
+    "cost": 2.00,
+    "used": 0.3,
+    "limit": 2,
+    "isUnlimited": false
+  },
+  {
+    "appName": "WhatsApp",
+    "imageName": "social_dark_gray",
+    "seekBarProgress": 30,
+    "type": 1,
+    "cost": 2.00,
+    "used": 0.2,
+    "limit": 2,
+    "isUnlimited": false
+  }
+]

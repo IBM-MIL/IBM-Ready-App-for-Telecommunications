@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:loginConfiguration xmlns:tns="http://www.worklight.com/auth/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+		<!-- Licensed Materials - Property of IBM
+			 5725-I43 (C) Copyright IBM Corp. 2006, 2013. All Rights Reserved.
+			 US Government Users Restricted Rights - Use, duplication or
+             disclosure restricted by GSA ADP Schedule Contract with IBM Corp. -->	
+
+	 <staticResources>
+	 <!--  
+	   		<resource id="logUploadServlet" securityTest="LogUploadServlet">
+			<urlPatterns>/apps/services/loguploader*</urlPatterns>
+		</resource>
+		-->
+		<resource id="subscribeServlet" securityTest="SubscribeServlet">
+			<urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns>
+		</resource>
+		
+	</staticResources> 
+
+   <!--  Sample security tests  
+         Even if not used there will be some default webSecurityTest and mobileSecurityTest 
+         
+		 Attention: If you are adding an app authenticity realm to a security test, 
+		 you must also update the application-descriptor.xml. Please refer to the user documentation 
+		 on application authenticity for environment specific guidelines. -->   
+         
+	 <securityTests>	
+       	<customSecurityTest name="SubscribeServlet">
+       		<test realm="SubscribeServlet" isInternalUserID="true"/>
+       	</customSecurityTest>    		
+
+	</securityTests> 
+	
+	<realms>
+		<realm name="AdapterAuthenticationRealm" loginModule="AdapterAuthenticationLoginModule">
+			<className>com.worklight.integration.auth.AdapterAuthenticator</className>
+			<parameter name="login-function" value="AuthenticationAdapter.onAuthRequired" />
+			<parameter name="logout-function" value="AuthenticationAdapter.onLogout" />
+		</realm>
+		
+		<realm name="SubscribeServlet" loginModule="rejectAll">
+			<className>com.worklight.core.auth.ext.HeaderAuthenticator</className>			
+		</realm>
+    	
+	</realms>
+
+	<loginModules>
+		<loginModule name="AdapterAuthenticationLoginModule" expirationInSeconds="10000">
+			<className>com.worklight.core.auth.ext.NonValidatingLoginModule</className>
+		</loginModule>
+		
+		<loginModule name="requireLogin" expirationInSeconds="-1">
+			<className>com.worklight.core.auth.ext.SingleIdentityLoginModule</className>
+		</loginModule>
+		
+		<loginModule name="rejectAll">
+			<className>com.worklight.core.auth.ext.RejectingLoginModule</className>
+		</loginModule>
+		
+	</loginModules>
+
+</tns:loginConfiguration>

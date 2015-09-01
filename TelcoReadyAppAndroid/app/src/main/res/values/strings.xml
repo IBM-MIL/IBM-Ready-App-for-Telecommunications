@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">ACME Wireless</string>
+
+    <!--overflow menu-->
+    <string name="action_add_offer">Add Offer</string>
+    <string name="action_hotspot_notification">Generate Hotspot Notification</string>
+    <string name="action_show_walkthrough">Walkthrough</string>
+
+    <!-- tab titles -->
+    <string name="my_plan">My Plan</string>
+    <string name="data">Data</string>
+    <string name="talk">Talk</string>
+    <string name="text">Text</string>
+
+    <!-- system notification -->
+    <string name="accept">ACCEPT</string>
+
+    <!-- hotspot/wifi screen -->
+    <string name="verified_network">Verified Network</string>
+    <string name="unverified_network">Unverified Network</string>
+    <string name="distance_away">km away</string>
+    <string name="no_sign_in">No sign-in required</string>
+    <string name="sign_in">Sign-in required</string>
+    <string name="connections">connections</string>
+    <string name="searching">Searching&#8230;</string>
+    <string name="location_desc">Location</string>
+
+    <!--main activity toolbar-->
+    <string name="month">/month</string>
+    <string name="base_plan">&#160;base plan +&#160;</string>
+
+    <!-- other -->
+    <string name="hotspot_notification_title">Reminder: Meeting coming up!</string>
+    <string name="hotspot_notification_body">We\'ve got you covered. Tap to find wifi.</string>
+    <string name="offer_recharge">We\’ve noticed that you have been adding data regularly on
+        Sundays, add to include Unlimited Sundays to your plan.
+    </string>
+    <string name="recharge_notification">Tap to add unlimited data on Sundays to your base plan for
+        only $5.00.
+    </string>
+    <string name="offer_notification_title">New offer for your plan!</string>
+    <string name="internet_unit">Mbps</string>
+
+    <!--fonts-->
+    <string name="roboto_light">Roboto-Light.ttf</string>
+    <string name="roboto_medium">Roboto-Medium.ttf</string>
+    <string name="roboto_regular">Roboto-Regular.ttf</string>
+
+    <!--recharge screen-->
+    <string name="recharge_data">Recharge Data</string>
+    <string name="recharge_talk">Recharge Talk</string>
+    <string name="recharge_text">Recharge Text</string>
+    <string name="recharge_accept">ACCEPT</string>
+    <string name="data_units">GB</string>
+    <string name="talk_units">min</string>
+    <string name="text_units">SMS</string>
+
+    <!--cards-->
+    <string name="unlimited_sundays">Unlimited Sundays</string>
+    <string name="card_accept">ACCEPT</string>
+    <string name="card_dismiss">DISMISS</string>
+    <string name="card_remove">REMOVE</string>
+    <string name="card_cost">$5.00</string>
+    <string name="card_share">SHARE</string>
+    <string name="card_tell_friends">Tell Your Friends</string>
+    <string name="you_added">You added</string>
+    <string name="to_plan">to your plan this month</string>
+    <string name="card_share_body">Just added on to my ACME wireless plan! Find out more here:
+        http://ibm.co/mobilefirst
+    </string>
+    <string name="card_icon_description">Recharge Icon</string>
+    <string name="card_info_desc">Information Icon</string>
+
+    <!--data tab-->
+    <string name="confirm_data_change">ACCEPT</string>
+    <string name="current_cycle_header">CURRENT CYCLE</string>
+    <string name="incoming_header">INCOMING</string>
+    <string name="outgoing_header">OUTGOING</string>
+    <string name="add_app_offer">ADD</string>
+
+    <!--onboarding-->
+    <string name="welcome_intro">Welcome to\nACME Wireless</string>
+    <string name="card_intro">Cards appear when you have a\nnotification or offer.</string>
+    <string name="share_intro">When you accept an offer, you can\nshare with your followers.</string>
+    <string name="recharge_intro">You can recharge talk/text/data\nwith individual amounts.</string>
+    <string name="wifi_intro">Find the closest and best wifi\nto keep data charges down.</string>
+    <string name="notification_intro">You can trigger notification cards\nto appear in the overflow menu.</string>
+    <string name="thanks_intro">Thank you for providing usage info\nthat helps us improve this app.</string>
+    <string name="no_offer_placeholder_text">You have not added any picks to your plan.</string>
+    <string name="no_offers">You do not have any offers at this time.</string>
+    <string name="no_app_offers">You do not have any more app offers.</string>
+    <string name="skip_button">SKIP</string>
+    <string name="done_button">DONE</string>
+    <string name="next_button">NEXT</string>
+    <string name="terms_conditions">TERMS AND CONDITIONS</string>
+    <string name="days_left">7 DAYS</string>
+    <string name="billing_cycle">LEFT IN BILLING CYCLE</string>
+    <string name="month_cycle">June 1 - June 30</string>
+    <string name="unlimited_offer">UNLIMITED</string>
+    <string name="percent_used">% USED</string>
+
+    <!--Content Descriptions-->
+    <string name="con_desc_my_plan_tab">Go to my plan tab</string>
+    <string name="con_desc_my_data_tab">Go to my data tab</string>
+    <string name="con_desc_my_talk_tab">Go to my talk tab</string>
+    <string name="con_desc_my_text_tab">Go to my text tab</string>
+    <string name="con_desc_recharge_up">Increase recharge amount</string>
+    <string name="con_desc_recharge_down">Decrease recharge amount</string>
+    <string name="con_desc_data_up">Increase data base plan amount</string>
+    <string name="con_desc_data_down">Decrease data base plan amount</string>
+    <string name="baseplan_snackbar">You have modified your base plan</string>
+    <string name="undo">UNDO</string>
+    <string name="app_usage_header">APP USAGE</string>
+    <string name="my_apps_header">MY APPS</string>
+    <string name="add_to_plan_header">ADDED TO YOUR PLAN</string>
+    <string name="plan_picks_header">PICKS FOR YOUR PLAN</string>
+    <string name="per_cycle_charge">/cycle charge</string>
+
+</resources>

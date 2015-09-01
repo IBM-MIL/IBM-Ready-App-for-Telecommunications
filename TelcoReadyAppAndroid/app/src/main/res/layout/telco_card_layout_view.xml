@@ -1,0 +1,133 @@
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="7dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginRight="10dp"
+    app:cardBackgroundColor="@color/white"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/card_icon"
+            android:contentDescription="@string/card_icon_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/recharge" />
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/offer_title"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/card_icon"
+            android:layout_toEndOf="@id/card_icon"
+            android:text="@string/recharge_data"
+            android:textColor="@color/dark_gray"
+            android:textSize="20sp"
+            app:font="@string/roboto_regular"
+            android:layout_toLeftOf="@+id/costTextView"
+            android:layout_toStartOf="@+id/costTextView" />
+
+        <ImageButton
+            android:id="@+id/info_icon_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/invisible"
+            android:src="@drawable/info"
+            android:contentDescription="@string/card_info_desc"/>
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/costTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignBaseline="@id/offer_title"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toLeftOf="@id/info_icon_button"
+            android:layout_toStartOf="@id/info_icon_button"
+            android:text="@string/card_cost"
+            android:textSize="12sp" />
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/offer_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/offer_title"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/info_icon_button"
+            android:layout_toStartOf="@id/info_icon_button"
+            android:layout_toRightOf="@id/card_icon"
+            android:layout_toEndOf="@id/card_icon"
+            android:text="@string/offer_recharge"
+            android:textSize="12sp" />
+
+        <View
+            android:id="@+id/line_break"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/offer_body"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_ae" />
+
+        <RelativeLayout
+            android:id="@+id/card_bottom_portion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_break"
+            >
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/accept"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/invisible"
+                android:padding="15dp"
+                android:text="@string/accept"
+                android:textColor="@color/light_indigo" />
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/dismiss_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/accept"
+                android:layout_toStartOf="@+id/accept"
+                android:background="@color/invisible"
+                android:padding="15dp"
+                android:textColor="@color/gray_ae"
+                tools:text="@string/card_dismiss"
+                tools:ignore="RelativeOverlap" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

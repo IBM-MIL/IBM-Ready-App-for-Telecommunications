@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/usage_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            tools:src="@android:drawable/ic_lock_lock"
+            tools:ignore="ContentDescription"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/usage_top_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/light_gray"
+                android:textSize="12sp"
+                tools:text=""
+                />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/custom_progressbar_color"
+                tools:progress="50"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                    android:id="@+id/bottom_left_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_gray"
+                    android:textSize="12sp"
+                    tools:text="58" />
+
+                <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                    android:id="@+id/bottom_right_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textColor="@color/light_gray"
+                    android:textSize="12sp"
+                    tools:text=""
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+</LinearLayout>

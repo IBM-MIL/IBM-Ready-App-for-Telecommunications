@@ -1,0 +1,10 @@
+Subsystem-ManifestVersion: 1
+Subsystem-SymbolicName: OAuthTai-1.0; visibility:=public
+Subsystem-Version: 1.0.0
+Subsystem-Content: com.ibm.websphere.security; version="[1,1.0.100)",
+  com.ibm.worklight.oauth.tai; version="[1,1.0.100)",
+  com.ibm.websphere.appserver.json-1.0; type="osgi.subsystem.feature",
+  com.ibm.websphere.appserver.jaxrs-1.1; type="osgi.subsystem.feature"
+IBM-API-Package: com.worklight.oauth.tai; type="ibm-api"
+Subsystem-Type: osgi.subsystem.feature
+IBM-Feature-Version: 2

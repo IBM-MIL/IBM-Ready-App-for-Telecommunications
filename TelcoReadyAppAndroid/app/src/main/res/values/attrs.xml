@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<resources>
+
+    <declare-styleable name="TelcoUsageView">
+        <!--Default value: 50-->
+        <attr name="percentUsed" format="integer" />
+        <!--Visibility will be View.Gone if not set-->
+        <attr name="image" format="reference" />
+        <!--Visibility will be View.Gone if not set-->
+        <attr name="topText" format="string" />
+        <!--Visibility will be View.Gone if not set-->
+        <attr name="bottomLeftText" format="string" />
+        <!--Visibility will be View.Gone if not set-->
+        <attr name="bottomRightText" format="string" />
+        <!--Default value: false-->
+        <attr name="progressBarHidden" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="RobotoTextView">
+        <!--Default value: Roboto-Regular.ttf-->
+        <attr name="font" format="string" />
+    </declare-styleable>
+
+</resources>

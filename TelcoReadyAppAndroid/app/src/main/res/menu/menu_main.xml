@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_walkthrough"
+        android:orderInCategory="100"
+        android:title="@string/action_show_walkthrough"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_send_offer_notification"
+        android:onClick="generateDemoOffer"
+        android:orderInCategory="100"
+        android:title="@string/action_add_offer"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_send_hotspot_notification"
+        android:onClick="generateHotspotNotification"
+        android:orderInCategory="100"
+        android:title="@string/action_hotspot_notification"
+        app:showAsAction="never" />
+
+</menu>

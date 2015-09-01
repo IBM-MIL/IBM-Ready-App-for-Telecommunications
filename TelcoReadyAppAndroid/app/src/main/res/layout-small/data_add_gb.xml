@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingStart="@dimen/layout_left_margin"
+              android:paddingLeft="@dimen/layout_left_margin"
+              android:paddingEnd="@dimen/layout_right_margin"
+              android:paddingRight="@dimen/layout_right_margin"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:id="@+id/arrows"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/up_arrow"
+                    android:contentDescription="@string/con_desc_data_up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:src="@drawable/up" />
+                <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                    android:id="@+id/usage_gb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/indigo"
+                    android:textSize="@dimen/data_unit_size"
+                    app:font="@string/roboto_light" />
+                <ImageView
+                    android:id="@+id/down_arrow"
+                    android:contentDescription="@string/con_desc_data_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:src="@drawable/down" />
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/arrows"
+                android:layout_toEndOf="@+id/arrows"
+                >
+                <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                    android:id="@+id/usage_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/data_unit_left_padding"
+                    android:paddingStart="@dimen/data_unit_left_padding"
+                    android:paddingRight="@dimen/data_unit_right_padding"
+                    android:paddingEnd="@dimen/data_unit_right_padding"
+                    android:text="@string/data_units"
+                    android:textColor="@color/indigo"
+                    android:textSize="@dimen/data_unit_size"
+                    app:font="@string/roboto_light" tools:ignore="NewApi"
+                    tools:targetApi="jelly_bean_mr1" />
+                <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                    android:id="@+id/usage_gb_unit_per"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/usage_unit"
+                    android:layout_toRightOf="@+id/usage_unit"
+                    android:layout_toEndOf="@+id/usage_unit"
+                    android:text="@string/month"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/data_per_month_size"
+                    app:font="@string/roboto_regular" />
+                <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                    android:id="@+id/confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/usage_unit"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="#ffffffff"
+                    android:text="@string/confirm_data_change"
+                    android:textColor="@color/light_gray"
+                    android:textSize="@dimen/confirm_button_size"
+                    app:font="@string/roboto_regular"
+                    tools:ignore="RelativeOverlap" />
+            </RelativeLayout>
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/separator_line_height"
+            android:background="@color/light_gray" />
+</LinearLayout>

@@ -1,0 +1,59 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+-injars      bin/classes
+-injars      libs
+-outjars     bin/classes-processed.jar
+
+# Using Google's License Verification Library 
+-keep class com.android.vending.licensing.ILicensingService
+
+# Specifies to write out some more information during processing. 
+# If the program terminates with an exception, this option will print out the entire stack trace, instead of just the exception message.
+-verbose
+
+####################################################################################################
+##############################  IBM MobileFirst Platform configuration  ############################
+####################################################################################################
+
+# These options let obfuscated applications or libraries produce stack traces that can still be deciphered later on 
+-renamesourcefileattribute SourceFile    
+-keepattributes SourceFile,LineNumberTable
+
+-keep class com.worklight.wlclient.push.** { *; }
+-keep class com.worklight.common.security.AppAuthenticityToken { *; }
+
+# Enable proguard with Google libs
+-keep class com.google.** { *;}
+-dontwarn com.google.common.**
+-dontwarn com.google.ads.**
+
+# These classes contain references to external jars which are not included in the default MobileFirst project.
+-dontwarn com.worklight.common.internal.WLTrusteerInternal*
+-dontwarn com.worklight.jsonstore.**
+-dontwarn org.codehaus.jackson.map.ext.*
+-dontwarn org.bouncycastle.**
+-dontwarn com.worklight.wlclient.push.GCMIntentService
+
+-dontwarn com.worklight.wlclient.push.WLBroadcastReceiver
+-dontwarn com.worklight.wlclient.push.common.*
+-dontwarn com.worklight.wlclient.api.WLPush
+######################################################################################################

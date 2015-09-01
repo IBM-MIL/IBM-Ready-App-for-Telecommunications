@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:theme="@style/RechargeTheme"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/invisible"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/Theme.AppCompat.Light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textColor="@color/dark_orange"
+                android:textSize="14sp"
+                app:font="@string/roboto_medium" />
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/recharge_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:font="@string/roboto_regular"
+                tools:text="Recharge Data" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/recharge_accept_bottom_margin"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/up_arrow"
+            android:contentDescription="@string/con_desc_recharge_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:src="@drawable/up_white"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/unit_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:font="@string/roboto_light"
+                />
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/unit_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:font="@string/roboto_light"
+                />
+
+        </LinearLayout>
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/costTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/transparent_white"
+            android:textSize="20sp"
+            app:font="@string/roboto_light"
+            />
+
+        <ImageView
+            android:id="@+id/down_arrow"
+            android:contentDescription="@string/con_desc_recharge_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/down_white"
+            android:visibility="invisible"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recharge_accept_bottom_margin"
+        android:layout_marginTop="@dimen/recharege_accept_bottom_margin_negative"
+        android:orientation="vertical"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_orange" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/confirmation_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/transparent_white"
+                app:font="@string/roboto_regular"
+                tools:text="Add 5 extra GB for the month?"
+                />
+
+            <com.ibm.mil.readyapps.telco.views.RobotoTextView
+                android:id="@+id/accept_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="end"
+                android:text="@string/recharge_accept"
+                android:textColor="@color/white"
+                app:font="@string/roboto_medium"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

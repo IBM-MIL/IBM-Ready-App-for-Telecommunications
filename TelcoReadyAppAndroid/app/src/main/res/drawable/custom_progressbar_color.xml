@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/apptheme_progress_bg_holo_light" />
+
+    <item android:id="@android:id/secondaryProgress">
+        <scale
+            android:drawable="@drawable/apptheme_progress_secondary_holo_light"
+            android:scaleWidth="100%" />
+    </item>
+
+    <item android:id="@android:id/progress">
+        <scale
+            android:drawable="@drawable/apptheme_progress_primary_holo_light"
+            android:scaleWidth="100%" />
+    </item>
+
+</layer-list>

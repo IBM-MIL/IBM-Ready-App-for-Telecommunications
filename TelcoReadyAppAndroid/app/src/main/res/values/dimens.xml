@@ -1,0 +1,38 @@
+<resources>
+
+    <!--FAB margin to fix weird material issues-->
+    <dimen name="fab_margin">0.1dp</dimen>
+
+    <!--margin for bottom accept view on recharge screen-->
+    <dimen name="recharge_accept_bottom_margin">50dp</dimen>
+    <dimen name="recharege_accept_bottom_margin_negative">-50dp</dimen>
+
+    <!--Data Fragment dimens-->
+    <dimen name="layout_left_margin">15dp</dimen>
+    <dimen name="layout_right_margin">15dp</dimen>
+    <dimen name="top_margin">10dp</dimen>
+
+    <!--curent cycle section-->
+    <dimen name="data_unit_left_padding">7dp</dimen>
+    <dimen name="separator_line_height">1dp</dimen>
+    <dimen name="header_bottom_margin">5dp</dimen>
+    <dimen name="confirm_button_size">14sp</dimen>
+    <dimen name="data_per_month_size">20sp</dimen>
+    <dimen name="data_unit_size">28sp</dimen>
+    <dimen name="header_size">14sp</dimen>
+
+    <!--my apps section-->
+    <dimen name="image_right_margin">10dp</dimen>
+    <dimen name="app_title_size">12sp</dimen>
+    <dimen name="app_cost_size">10sp</dimen>
+    <dimen name="add_button_top_margin">-23sp</dimen>
+    <dimen name="text_top_padding">4dp</dimen>
+    <dimen name="recyclerView_bottom_padding">80dp</dimen>
+    <dimen name="usage_bottom_padding">5dp</dimen>
+
+    <dimen name="no_offer_placeholder_top_margin">25dp</dimen>
+    <dimen name="no_offer_placeholder_left_margin">75dp</dimen>
+    <dimen name="data_unit_right_padding">0dp</dimen>
+
+
+</resources>

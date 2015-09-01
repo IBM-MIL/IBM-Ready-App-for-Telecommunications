@@ -1,0 +1,4 @@
+Minor modifications to this library include:
+
+- Changing the next arrow to text that says "NEXT"
+- Removing all unnecessary portions of library that we don't specifically need (e.g. animations)

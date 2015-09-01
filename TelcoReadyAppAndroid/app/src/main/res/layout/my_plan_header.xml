@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Licensed Materials - Property of IBM
+  ~ © Copyright IBM Corporation 2015. All Rights Reserved.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        >
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/daysLeftDynamic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/days_left"
+            android:textColor="@color/indigo"
+            app:font="@string/roboto_medium"
+            />
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:text="@string/billing_cycle"
+            app:font="@string/roboto_medium"
+            />
+
+        <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="@string/month_cycle"
+            android:textColor="@color/gray_ae"
+            android:textSize="12sp"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separatorLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="15dp"
+        android:background="@color/light_gray"
+        />
+
+    <com.ibm.mil.readyapps.telco.views.TelcoUsageView
+        android:id="@+id/dataUsageView"
+        style="@style/Widget.UsageViewMargins"
+        android:layout_marginBottom="10dp"
+        app:image="@drawable/data_dark_gray"
+        app:percentUsed="50"
+        />
+
+    <com.ibm.mil.readyapps.telco.views.TelcoUsageView
+        android:id="@+id/talkUsageView"
+        style="@style/Widget.UsageViewMargins"
+        android:layout_marginBottom="10dp"
+        app:image="@drawable/talk_dark_gray"
+        app:percentUsed="80"
+        />
+
+    <com.ibm.mil.readyapps.telco.views.TelcoUsageView
+        android:id="@+id/textUsageView"
+        style="@style/Widget.UsageViewMargins"
+        app:image="@drawable/text_dark_gray"
+        app:percentUsed="30"
+        />
+
+</LinearLayout>
