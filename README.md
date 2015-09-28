@@ -1,3 +1,4 @@
+![](README_assets/banner.png)
 # IBM Ready App for Telecommunications
 
 ### Overview
