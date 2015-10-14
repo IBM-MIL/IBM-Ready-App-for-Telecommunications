@@ -37,7 +37,7 @@
         <activity android:name=".onboarding.OnboardingActivity"/>
 
         <activity android:name=".activities.MainActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTop" />
 
 
 
