@@ -36,7 +36,10 @@
 
         <activity android:name=".onboarding.OnboardingActivity"/>
 
-        <activity android:name=".activities.MainActivity"/>
+        <activity android:name=".activities.MainActivity"
+            android:launchMode="singleTask" />
+
+
 
         <activity
             android:name=".hotspots.HotSpotActivity"
