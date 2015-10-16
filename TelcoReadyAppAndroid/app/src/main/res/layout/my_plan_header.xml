@@ -15,6 +15,7 @@
     >
 
     <LinearLayout
+        android:id="@+id/myPlanView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -42,6 +43,7 @@
             />
 
         <com.ibm.mil.readyapps.telco.views.RobotoTextView
+            android:id="@+id/dateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="end"
