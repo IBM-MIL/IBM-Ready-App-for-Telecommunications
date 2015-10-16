@@ -11,14 +11,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.ibm.mil.readyapps.telco.R;
 import com.ibm.mil.readyapps.telco.cycles.Cycle;
+import com.ibm.mil.readyapps.telco.views.RobotoTextView;
 import com.ibm.mil.readyapps.telco.views.TelcoUsageView;
 import com.yqritc.recyclerviewmultipleviewtypesadapter.DataBindAdapter;
 import com.yqritc.recyclerviewmultipleviewtypesadapter.DataBinder;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import butterknife.Bind;
@@ -55,6 +59,13 @@ public class PlanOverviewBinder extends DataBinder<PlanOverviewBinder.CurrentPla
         currentPlanViewHolder.textUsageView.setPercentUsed((int) getUsedPercentage(textCycle));
         currentPlanViewHolder.textUsageView.setBottomLeftText(setUsedVsLimit(textCycle));
         currentPlanViewHolder.textUsageView.setBottomRightText(getUsedPercentage(textCycle) + resources.getString(R.string.percent_used));
+
+
+        System.out.print(currentPlanViewHolder.myPlanView.getChildCount());
+        RobotoTextView monthCycleTextView = ButterKnife.findById(currentPlanViewHolder.myPlanView, R.id.dateText);
+        Locale currentLocale = Locale.getDefault();
+        String myCalender = getMonthCycle(currentLocale);
+        monthCycleTextView.setText(myCalender);
     }
 
     private String setUsedVsLimit(Cycle cycle) {
@@ -78,6 +89,32 @@ public class PlanOverviewBinder extends DataBinder<PlanOverviewBinder.CurrentPla
         }
         usedPercent = Float.valueOf(df.format(usedPercent));
         return usedPercent;
+    }
+
+    /**
+     * Get the month cycle for the plan page
+     *
+     * @param currentLocale locale of the phone
+     * @return currentDate the current date
+     */
+    private String getMonthCycle(Locale currentLocale) {
+        Calendar cal = Calendar.getInstance(currentLocale);
+
+        //get the startingDate - 3 weeks ago
+        Calendar startingDate = (Calendar) cal.clone();
+        startingDate.add(Calendar.DAY_OF_YEAR, -21);
+        SimpleDateFormat date_format = new SimpleDateFormat("MMM d");
+        String beginningDate = date_format.format(startingDate.getTime());
+
+        //get out the ending date - 7 days in the future
+        Calendar endingDate = (Calendar) cal.clone();
+        endingDate.add(Calendar.DAY_OF_YEAR, 7);
+        String endDate = date_format.format(endingDate.getTime());
+        System.out.println(endDate);
+
+        String monthCycle = beginningDate + " - " + endDate;
+
+        return monthCycle;
     }
 
     @Override
@@ -113,6 +150,7 @@ public class PlanOverviewBinder extends DataBinder<PlanOverviewBinder.CurrentPla
         @Bind(R.id.dataUsageView)TelcoUsageView dataUsageView;
         @Bind(R.id.talkUsageView)TelcoUsageView talkUsageView;
         @Bind(R.id.textUsageView)TelcoUsageView textUsageView;
+        @Bind(R.id.myPlanView)LinearLayout myPlanView;
 
         public CurrentPlanViewHolder(View view) {
             super(view);
