@@ -37,7 +37,6 @@ import static org.hamcrest.Matchers.containsString;
 @LargeTest
 public class MyPlanTest {
 
-    public static final String DATE_TEXT = "June 1 - June 30";
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule = new ActivityTestRule(MainActivity.class);
 
@@ -47,11 +46,10 @@ public class MyPlanTest {
     @Test
     public void testMyPlanText() throws Exception {
         onView(withId(R.id.daysLeftDynamic)).check(ViewAssertions.matches(isDisplayed()));
-        onView(withText(containsString(DATE_TEXT))).check(ViewAssertions.matches(isDisplayed()));
     }
 
     /**
-     * This test checks for an offer on the My Plan page, acepts the offer, then checks to see
+     * This test checks for an offer on the My Plan page, accepts the offer, then checks to see
      * if the offer is removed from the screen
      */
     public void testAcceptOffer() {
