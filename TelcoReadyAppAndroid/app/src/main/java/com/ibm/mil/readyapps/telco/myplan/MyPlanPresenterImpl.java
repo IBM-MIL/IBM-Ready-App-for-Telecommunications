@@ -221,26 +221,6 @@ public class MyPlanPresenterImpl implements MyPlanPresenter {
     }
 
     /**
-     * Updates new received offers in my plan by subscribing
-     * to unaccepted offer stream and updating view as new
-     * offers emitted.
-     */
-    @Override
-    public void updateOffers() {
-        offerModel.getUnacceptedOfferStream()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(new Action1<Offer>() {
-                @Override
-                public void call(Offer offer) {
-                    if(!offer.isAppOffer()) {
-                        view.displayOffer(offer);
-                    }
-                }
-            });
-    }
-
-    /**
      * update the cycle model and view with a new cycle.
      *
      * @param cycle the new cycle to update with

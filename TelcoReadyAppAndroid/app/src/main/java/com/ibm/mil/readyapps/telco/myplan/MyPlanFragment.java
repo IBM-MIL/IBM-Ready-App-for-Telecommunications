@@ -80,10 +80,6 @@ public class MyPlanFragment extends Fragment implements MyPlanView {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-//        presenter.updateCycles(cycleBinder.getUpdateDataStream());
-//        presenter.updateCycles(cycleBinder.getUpdateTalkStream());
-//        presenter.updateCycles(cycleBinder.getUpdateTextStream());
-        presenter.updateOffers();
         presenter.acceptOffers(offerBinder.getOfferAcceptStream());
         presenter.dismissOffer(offerBinder.getOfferDismissStream());
         presenter.dismissOffer(offerModel.getUndoOfferRemoveStream());
