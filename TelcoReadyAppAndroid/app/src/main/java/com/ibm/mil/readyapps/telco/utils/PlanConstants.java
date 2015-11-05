@@ -24,6 +24,7 @@ public final class PlanConstants {
     public static final String DATA_UNIT = MainActivity.context.getResources().getString(R.string.data_units); // gigabytes
     public static final String TALK_UNIT = MainActivity.context.getResources().getString(R.string.talk_units); // minutes
     public static final String TEXT_UNIT = MainActivity.context.getResources().getString(R.string.text_units); // texts
+    public static final int MIN_UNIT = 1;
     public static final int INITIAL_DATA_AMOUNT = 5; // in gigabytes
     public static final int INITIAL_TALK_AMOUNT = 500; // in minutes
     public static final int INITIAL_TEXT_AMOUNT = 1000; // in texts

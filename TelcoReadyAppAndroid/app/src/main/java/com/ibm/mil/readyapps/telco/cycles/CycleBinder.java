@@ -223,7 +223,7 @@ public class CycleBinder extends DataBinder<CycleBinder.CurrentCycleViewHolder> 
                     confirmUpdate.setTextColor(resources.getColor(R.color.light_gray));
                 else
                     confirmUpdate.setTextColor(resources.getColor(R.color.light_indigo));
-            } else if (view.equals(downArrow) && limit > currentCycle.getUsed()) {
+            } else if (view.equals(downArrow) && limit > currentCycle.getUsed() && limit > PlanConstants.MIN_UNIT) {
                 limit = limit - STEP_AMOUNT;
                 //change accept button color based on the selected amount
                 if (limit == prevLimit)
