@@ -36,6 +36,4 @@ public interface MyPlanPresenter {
     void updateCycles(Observable<Cycle> updateCycleStream);
 
     void getBasePlanInfo();
-
-    void updateOffers();
 }

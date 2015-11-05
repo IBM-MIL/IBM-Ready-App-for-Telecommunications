@@ -26,8 +26,6 @@ public interface OfferModel {
 
     Observable<Offer> getUndoOfferRemoveStream();
 
-    Observable<Offer> getUnacceptedOfferStream();
-
     Observable<Offer> getAppOfferStream();
 
     void addOffer(Offer offer);

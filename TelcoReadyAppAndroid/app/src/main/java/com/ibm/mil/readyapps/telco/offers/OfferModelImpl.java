@@ -28,7 +28,6 @@ public class OfferModelImpl implements OfferModel {
     private static final PublishSubject<Offer> appOfferStream = PublishSubject.create();
     private static final PublishSubject<Offer> undoOfferAcceptStream = PublishSubject.create();
     private static final PublishSubject<Offer> undoOfferRemoveStream = PublishSubject.create();
-    private static final PublishSubject<Offer> unacceptedOfferStream = PublishSubject.create();
 
     @Override
     public Observable<Offer> getAppOffers(Context context) {
@@ -57,11 +56,6 @@ public class OfferModelImpl implements OfferModel {
     @Override
     public Observable<Offer> getUndoOfferRemoveStream() {
         return undoOfferRemoveStream;
-    }
-
-    @Override
-    public Observable<Offer> getUnacceptedOfferStream() {
-        return unacceptedOfferStream;
     }
 
     @Override
@@ -182,10 +176,6 @@ public class OfferModelImpl implements OfferModel {
     @Override
     public void removeAcceptedOffer(Offer offer) {
         acceptedOffers.remove(offer);
-        if(!offer.isAppOffer()) {
-            offers.add(offer);
-        }
-        unacceptedOfferStream.onNext(offer);
     }
 
     /**
@@ -240,7 +230,6 @@ public class OfferModelImpl implements OfferModel {
             int resId = ctx.getResources().getIdentifier(offer.getIcon(), "drawable", ctx.getPackageName());
             offer.setCardIcon(resId);
         }
-
         offers = initialOffers;
         return offers;
     }
