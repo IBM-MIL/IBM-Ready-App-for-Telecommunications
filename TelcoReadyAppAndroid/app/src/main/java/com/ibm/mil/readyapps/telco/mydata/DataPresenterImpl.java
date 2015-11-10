@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Locale;
 
 import rx.Observable;
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -189,8 +190,8 @@ public class DataPresenterImpl implements DataPresenter {
      * @param appOfferObservable the stream to subscribe to
      */
     @Override
-    public void addAppUsage(Observable<Offer> appOfferObservable) {
-        appOfferObservable
+    public Subscription addAppUsage(Observable<Offer> appOfferObservable) {
+        return appOfferObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Offer>() {

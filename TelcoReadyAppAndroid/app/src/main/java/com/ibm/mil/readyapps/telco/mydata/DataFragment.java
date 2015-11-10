@@ -17,7 +17,6 @@ import android.view.ViewGroup;
 
 import com.ibm.mil.readyapps.telco.R;
 import com.ibm.mil.readyapps.telco.cycles.Cycle;
-import com.ibm.mil.readyapps.telco.cycles.CycleBinder;
 import com.ibm.mil.readyapps.telco.offers.AcceptedOfferBinder;
 import com.ibm.mil.readyapps.telco.offers.Offer;
 import com.ibm.mil.readyapps.telco.offers.OfferModel;
@@ -29,8 +28,9 @@ import com.ibm.mil.readyapps.telco.utils.RecyclerDivider;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.ButterKnife;
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import rx.Subscription;
 
 /**
  * Fragment for Data tab of app.
@@ -45,7 +45,9 @@ public class DataFragment extends Fragment implements DataView {
     private List<Usage> usages;
     private Cycle cycle;
     private boolean alreadyInitializedRecyclerList = false;
+    private Subscription myAppSubscription;
     private OfferModel offerModel;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,11 +72,16 @@ public class DataFragment extends Fragment implements DataView {
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        myAppSubscription.unsubscribe();
+    }
+
     /**
      * Initialize the recycler view with adapter and add subscribers.
      */
     private void initRecyclerView() {
-        CycleBinder cycleBinder = dataAdapter.getCycleBinder();
         AcceptedOfferBinder acceptedOfferBinder = dataAdapter.getOfferBinder();
         recyclerView.setAdapter(dataAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -83,10 +90,9 @@ public class DataFragment extends Fragment implements DataView {
         animator.setAddDuration(200);
         animator.setRemoveDuration(200);
 
-        presenter.addAppUsage(offerModel.getAppOfferStream());
+        myAppSubscription = presenter.addAppUsage(offerModel.getAppOfferStream());
         presenter.removeOffer(acceptedOfferBinder.getRemoveOfferStream());
         presenter.undoRemoveOffer(offerModel.getUndoOfferRemoveStream());
-
     }
 
     /**

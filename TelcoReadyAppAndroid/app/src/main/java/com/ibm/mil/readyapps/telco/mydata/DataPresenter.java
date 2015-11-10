@@ -11,6 +11,7 @@ import com.ibm.mil.readyapps.telco.cycles.Cycle;
 import com.ibm.mil.readyapps.telco.offers.Offer;
 
 import rx.Observable;
+import rx.Subscription;
 
 /**
  * Methods needed to be implemented by classes implementing DataPresenter.
@@ -29,7 +30,7 @@ public interface DataPresenter {
 
     void undoRemoveOffer(Observable<Offer> observable);
 
-    void addAppUsage(Observable<Offer> appOfferObservable);
+    Subscription addAppUsage(Observable<Offer> appOfferObservable);
 
     void updateDataPlan(Observable<Cycle> cycleObservable);
 
