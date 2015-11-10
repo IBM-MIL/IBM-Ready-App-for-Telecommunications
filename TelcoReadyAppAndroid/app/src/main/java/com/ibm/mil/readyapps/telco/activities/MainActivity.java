@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         String MQA_KEY = getString(R.string.mqaKey);
         Configuration configuration = new Configuration.Builder(this)
                 .withAPIKey(MQA_KEY)
-                .withMode(MQA.Mode.QA)
+                .withMode(MQA.Mode.MARKET)
                 .withReportOnShakeEnabled(true)
                 .build();
 
