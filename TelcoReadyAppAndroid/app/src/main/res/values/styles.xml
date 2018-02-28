@@ -2,10 +2,9 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/indigo</item>
-        <item name="colorPrimaryDark">@color/dark_indigo</item>
-        <item name="colorAccent">@color/dark_indigo</item>
-        <item name="android:windowBackground">@null</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="HotSpotTheme" parent="Theme.AppCompat.Light.NoActionBar">

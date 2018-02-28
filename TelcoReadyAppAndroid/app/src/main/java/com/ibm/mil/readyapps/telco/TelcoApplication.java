@@ -4,9 +4,11 @@ import android.app.Application;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
+import com.ibm.mil.readyapps.telco.utils.TelcoChallengeHandler;
 import com.ibm.mil.readyapps.telco.utils.TwitterHelper;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.worklight.wlclient.api.WLClient;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -27,6 +29,11 @@ public class TelcoApplication extends Application {
         String analyticsKey = getString(R.string.analyticsKey);
         tracker = analytics.newTracker(analyticsKey);
         tracker.enableAutoActivityTracking(true);
+
+        //Initialize the MobileFirst SDK. This needs to happen just once.
+        WLClient.createInstance(this);
+        //Initialize the challenge handler
+        TelcoChallengeHandler.createAndRegister();
     }
 
 }

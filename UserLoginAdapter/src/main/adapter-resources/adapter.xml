@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2016 IBM Corp.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<mfp:adapter name="UserLogin"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mfp="http://www.ibm.com/mfp/integration"
+	xmlns:http="http://www.ibm.com/mfp/integration/http">
+
+	<displayName>UserLogin</displayName>
+	<description>Protect resources using a combination of username and password.</description>
+
+	<securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
+		<property name="maxAttempts" defaultValue="3" description="How many attempts are allowed" type="integer"/>
+		<property name="blockedStateExpirationSec" defaultValue="10" description="How long before the client can try again (seconds)" type="integer"/>
+		<property name="successStateExpirationSec" defaultValue="60" description="How long is a successful state valid for (seconds)" type="integer"/>
+		<property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered when using RememberMe (seconds)" type="integer"/>
+	</securityCheckDefinition>
+
+</mfp:adapter>

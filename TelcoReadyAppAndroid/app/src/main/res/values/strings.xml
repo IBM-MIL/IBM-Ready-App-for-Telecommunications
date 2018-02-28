@@ -40,6 +40,8 @@
     </string>
     <string name="offer_notification_title">New offer for your plan!</string>
     <string name="internet_unit">Mbps</string>
+    <string name="remaining_attempts">Remaining attempts %1$d</string>
+    <string name="hello_user">Hello, %1$s</string>
 
     <!--fonts-->
     <string name="roboto_light">Roboto-Light.ttf</string>

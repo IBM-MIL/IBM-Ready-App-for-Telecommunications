@@ -16,11 +16,11 @@
     android:paddingTop="15dp"
     android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <com.ibm.mil.readyapps.telco.views.RobotoTextView
             android:id="@+id/base_cost"
             android:layout_width="wrap_content"

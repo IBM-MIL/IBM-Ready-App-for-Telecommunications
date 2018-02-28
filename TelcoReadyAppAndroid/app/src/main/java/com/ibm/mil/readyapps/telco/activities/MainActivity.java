@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -135,34 +136,34 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setImageHighlight(planTabImage);
         subscribeForToolbarCostUpdates();
 
-        // configure and start MQA
-        String MQA_KEY = getString(R.string.mqaKey);
-        Configuration configuration = new Configuration.Builder(this)
-                .withAPIKey(MQA_KEY)
-                .withMode(MQA.Mode.MARKET)
-                .withReportOnShakeEnabled(true)
-                .build();
-
-        // Only want to start an MQA session when sending out a signed release build
-        Boolean startMQA = !BuildConfig.DEBUG;
-        if (startMQA) {
-            MQA.startNewSession(this, configuration);
-        }
-
-        // connect to MFP and register ChallengeHandler
-        CafeJava.connect(this)
-                .subscribe(new Action1<WLResponse>() {
-                    @Override public void call(WLResponse wlResponse) {
-                        Log.d(TAG, "Connection succeeded: " + wlResponse.getResponseText());
-                        WLClient.getInstance().registerChallengeHandler(new TelcoChallengeHandler());
-                    }
-                }, new Action1<Throwable>() {
-                    @Override public void call(Throwable throwable) {
-                        Log.d(TAG, "Connection failed: " + throwable.getMessage());
-                    }
-                });
-
-        WLAnalytics.setContext(this);
+//        // configure and start MQA
+//        String MQA_KEY = getString(R.string.mqaKey);
+//        Configuration configuration = new Configuration.Builder(this)
+//                .withAPIKey(MQA_KEY)
+//                .withMode(MQA.Mode.MARKET)
+//                .withReportOnShakeEnabled(true)
+//                .build();
+//
+//        // Only want to start an MQA session when sending out a signed release build
+//        Boolean startMQA = !BuildConfig.DEBUG;
+//        if (startMQA) {
+//            MQA.startNewSession(this, configuration);
+//        }
+//
+//        // connect to MFP and register ChallengeHandler
+//        CafeJava.connect(this)
+//                .subscribe(new Action1<WLResponse>() {
+//                    @Override public void call(WLResponse wlResponse) {
+//                        Log.d(TAG, "Connection succeeded: " + wlResponse.getResponseText());
+//                        WLClient.getInstance().registerChallengeHandler(new TelcoChallengeHandler());
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override public void call(Throwable throwable) {
+//                        Log.d(TAG, "Connection failed: " + throwable.getMessage());
+//                    }
+//                });
+//
+//        WLAnalytics.setContext(this);
     }
 
     @Override
@@ -191,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         Typeface font = FontCache.get("Roboto-Regular.ttf", context);
 
         for (int i = 0; i < pagerAdapter.getCount(); i++) {
-            TextView tv = (TextView) (((LinearLayout) ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(i)).getChildAt(0));
+            TextView tv = (TextView) (((LinearLayout) ((LinearLayout) tabLayout.getChildAt(0)).getChildAt(i)).getChildAt(1));
             tv.setAllCaps(false);
             tv.setTypeface(font);
         }

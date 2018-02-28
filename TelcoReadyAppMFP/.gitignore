@@ -1,3 +1,0 @@
-#Do not include files that are created when deploying the MFP adapters.
-/bin
-/classes

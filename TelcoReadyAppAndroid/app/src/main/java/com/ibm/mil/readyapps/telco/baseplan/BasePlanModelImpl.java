@@ -5,17 +5,23 @@
 
 package com.ibm.mil.readyapps.telco.baseplan;
 
-import android.util.Log;
 
+
+import android.util.Log;
 import com.ibm.mil.cafejava.CafeJava;
 import com.ibm.mil.cafejava.JavaProcedureInvoker;
 import com.ibm.mil.readyapps.telco.analytics.AnalyticsCnsts;
 import com.ibm.mil.readyapps.telco.analytics.OperationalAnalyticsReporter;
+
 import com.worklight.wlclient.api.WLResponse;
+
 
 import rx.Observable;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
+
+import static com.ibm.mil.readyapps.telco.utils.LoginActivity.credentials;
+
 
 /**
  * Implementation of BasePlanModel for updating BasePlan POJO
@@ -26,6 +32,7 @@ public class BasePlanModelImpl implements BasePlanModel {
 
     private static final BasePlan basePlan = new BasePlan();
     private static final PublishSubject<BasePlan> basePlanStream = PublishSubject.create();
+
 
     /**
      * Get the stream for subscribing to updates.
@@ -91,18 +98,26 @@ public class BasePlanModelImpl implements BasePlanModel {
 
     private void updateBasePlanMFP() {
 
-        CafeJava.invokeProcedure(new JavaProcedureInvoker.Builder("TelcoUserAdapter", "users/user1")
+        String userid=null;
+        try {
+            userid = credentials.getString("username");
+        }
+        catch (Exception e){
+
+        }
+
+        CafeJava.invokeProcedure(new JavaProcedureInvoker.Builder("TelcoUserAdapter", "users/"+userid)
                 .httpMethod(JavaProcedureInvoker.PUT).build())
                 .subscribe(new Action1<WLResponse>() {
                     @Override
                     public void call(WLResponse wlResponse) {
-                        Log.i("TEST", BasePlanModelImpl.class.getName() + " " + wlResponse
+                        Log.i("BasePlanModelImpl", BasePlanModelImpl.class.getName() + " " + wlResponse
                                 .getResponseText());
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
-                        Log.i("TEST", "UPDATE FAILED");
+                        Log.i("BasePlanModelImpl", "UPDATE FAILED");
                     }
                 });
     }

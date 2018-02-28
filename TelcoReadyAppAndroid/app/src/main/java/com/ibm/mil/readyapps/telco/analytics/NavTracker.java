@@ -5,6 +5,8 @@
 
 package com.ibm.mil.readyapps.telco.analytics;
 
+import android.util.Log;
+
 import java.util.Date;
 
 /**
@@ -50,7 +52,8 @@ public final class NavTracker {
             currentTime = newCurrentTime;
 
             if (!previousPage.isEmpty() && !currentPage.isEmpty()) {
-                long dwellTime = currentTime = previousTime;
+                long dwellTime = currentTime - previousTime;
+
                 OperationalAnalyticsReporter.pageTransition(previousPage, currentPage, dwellTime);
             }
 

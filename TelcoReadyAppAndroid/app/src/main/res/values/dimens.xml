@@ -34,5 +34,8 @@
     <dimen name="no_offer_placeholder_left_margin">75dp</dimen>
     <dimen name="data_unit_right_padding">0dp</dimen>
 
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
 
 </resources>

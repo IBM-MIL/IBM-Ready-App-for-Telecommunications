@@ -5,12 +5,17 @@
 
 package com.ibm.mil.readyapps.telco.hotspots;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +29,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -35,6 +41,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ibm.mil.readyapps.telco.R;
+import com.ibm.mil.readyapps.telco.activities.MainActivity;
 import com.ibm.mil.readyapps.telco.analytics.GestureListener;
 import com.ibm.mil.readyapps.telco.utils.JsonUtils;
 import com.ibm.mil.readyapps.telco.utils.MapUtils;
@@ -53,8 +60,8 @@ import rx.Observable;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 
-public class HotSpotActivity extends AppCompatActivity implements HotSpotView, OnMapReadyCallback {
-    private static final LatLng DEFAULT_LOCATION = new LatLng(30.398974, -97.712885);
+public class HotSpotActivity extends AppCompatActivity implements HotSpotView, OnMapReadyCallback,LocationListener {
+    private static final LatLng DEFAULT_LOCATION = new LatLng(35.913436, -78.858730);
     private static final DecimalFormat distanceFormatter = new DecimalFormat("0.0");
     private GestureDetectorCompat detector;
     @Bind(R.id.toolbar) Toolbar toolbar;
@@ -79,6 +86,9 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
     private HotSpotPresenter presenter;
     private BitmapDescriptor activePin;
     private BitmapDescriptor defaultPin;
+    private Context mcontext;
+    Location location,userLocation;
+
 
     private static SpannableString spanSuffix(String text, String suffix, Object... spans) {
         String fullText = text + " " + suffix;
@@ -98,6 +108,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mcontext = HotSpotActivity.this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hot_spot);
         ButterKnife.bind(this);
@@ -144,7 +155,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
         activePin = BitmapDescriptorFactory.fromResource(R.drawable.pin);
         defaultPin = BitmapDescriptorFactory.fromResource(R.drawable.dot);
 
-        map.setMyLocationEnabled(false);
+       // map.setMyLocationEnabled(false);
         map.getUiSettings().setMyLocationButtonEnabled(false);
         map.getUiSettings().setMapToolbarEnabled(false);
         map.getUiSettings().setCompassEnabled(false);
@@ -179,12 +190,8 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
             }
         });
 
-        Location userLocation = initUserMarker();
-        if (Utils.isConnected(this)) {
-            useOnlineMode(userLocation);
-        } else {
-            useOfflineMode(userLocation, null);
-        }
+     //  initUserMarker();
+        userLocation = getLocation();
     }
 
     private void useOnlineMode(final Location userLocation) {
@@ -222,21 +229,31 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
         };
     }
 
-    private Location initUserMarker() {
-        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        Location userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+    private void initUserMarker() {
+       // LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+       // Location userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+
 
         LatLng userPosition = DEFAULT_LOCATION; // default if no user location exists
         if (userLocation != null) {
             userPosition = new LatLng(userLocation.getLatitude(), userLocation.getLongitude());
         }
 
+
         userMarker = map.addMarker(new MarkerOptions()
                 .position(userPosition)
                 .anchor(0.5f, 0.5f)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.person)));
 
-        return MapUtils.convertLatLng(userMarker.getPosition());
+        userLocation = MapUtils.convertLatLng(userMarker.getPosition());
+        if (Utils.isConnected(this)) {
+            useOnlineMode(userLocation);
+        } else {
+            useOfflineMode(userLocation, null);
+        }
+
+        //return MapUtils.convertLatLng(userMarker.getPosition());
     }
 
     private void displayHotSpots(List<HotSpot> hotSpots) {
@@ -314,5 +331,99 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
         this.detector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
+
+    //new code
+
+
+
+    public Location getLocation() {
+        try {
+
+            LocationManager locationManager = (LocationManager) mcontext.getSystemService(LOCATION_SERVICE);
+            boolean isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+            boolean isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+            if (ActivityCompat.checkSelfPermission(mcontext,
+                    Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                if (isGPSEnabled) {
+                    if (location == null) {
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+                        if (locationManager != null) {
+                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        }
+                    }
+                }
+
+                if (isNetworkEnabled) {
+                    if (location == null) {
+                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
+                        if (locationManager != null) {
+                            location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                        }
+                    }
+                }
+              userLocation=  location;
+                initUserMarker();
+            }
+            else
+            {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        1);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return location;
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                    getLocation();
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                    Toast.makeText(HotSpotActivity.this, "Permission denied to read your External storage", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+    public void onProviderEnabled(String provider) {
+
+    }
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
 
 }

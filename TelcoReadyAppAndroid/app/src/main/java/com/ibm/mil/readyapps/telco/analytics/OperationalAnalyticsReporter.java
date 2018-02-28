@@ -40,7 +40,7 @@ public final class OperationalAnalyticsReporter {
             jsonObject = new JSONObject(json);
             jsonObject.put("_activity", "planChanged");
 
-            Log.i("TEST", "JSON AFTER ACTIVITY " + jsonObject.toString());
+            Log.i("OperationalAnalytics", "JSON AFTER ACTIVITY " + jsonObject.toString());
 
             WLAnalytics.log("Plan change accepted by a user", jsonObject); //async
         } catch (JSONException e) {
@@ -63,13 +63,14 @@ public final class OperationalAnalyticsReporter {
         Date date = new Date();
         Timestamp curTime = new Timestamp(date.getTime());
 
+
         String json = gson.toJson(new AnalyticsPageTransition(src, dst, curTime),
                 AnalyticsPageTransition.class);
         JSONObject jsonObject = null;
         try {
             jsonObject = new JSONObject(json);
             jsonObject.put("_activity", "pageTransition");
-            String dwellField = src + "_dwellTime";
+           String dwellField = src + "_dwellTime";
             double dwellTimeSeconds = (double) dwellTime / 1000;
             jsonObject.put(dwellField, dwellTimeSeconds );
 
@@ -79,6 +80,9 @@ public final class OperationalAnalyticsReporter {
             WLAnalytics.log("Page transition recorded.", jsonObject);
 
             WLAnalytics.send();
+
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
