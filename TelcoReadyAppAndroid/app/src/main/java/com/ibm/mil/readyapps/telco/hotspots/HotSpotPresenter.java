@@ -10,14 +10,12 @@ import android.location.Location;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.List;
+
 import rx.Observable;
 
 public interface HotSpotPresenter {
-    /**
-     * Generates a stream of hotspots for the given location, using the Geocoder for address
-     * lookups
-     */
-    Observable<HotSpot> getOnlineHotSpots(Geocoder geocoder, Location location);
+
 
     /**
      * Generates a stream of HotSpots for a given location, without the need for an internet

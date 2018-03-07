@@ -29,12 +29,7 @@ public class HotSpotPresenterImpl implements HotSpotPresenter {
         this.model = model;
     }
 
-    @Override public Observable<HotSpot> getOnlineHotSpots(Geocoder geocoder, Location location) {
-        return model.getHotSpots(location)
-                .timeout(5, TimeUnit.SECONDS)
-                .compose(new HotSpotTransformer(geocoder, location))
-                .compose(cacheHotSpots());
-    }
+
 
     @Override
     public Observable<HotSpot> getOfflineHotSpots(String json, Geocoder geocoder,

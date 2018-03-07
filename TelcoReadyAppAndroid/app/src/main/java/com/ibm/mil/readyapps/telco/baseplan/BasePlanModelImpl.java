@@ -8,16 +8,18 @@ package com.ibm.mil.readyapps.telco.baseplan;
 
 
 import android.util.Log;
-import com.ibm.mil.cafejava.CafeJava;
-import com.ibm.mil.cafejava.JavaProcedureInvoker;
 import com.ibm.mil.readyapps.telco.analytics.AnalyticsCnsts;
 import com.ibm.mil.readyapps.telco.analytics.OperationalAnalyticsReporter;
 
+import com.worklight.wlclient.api.WLFailResponse;
+import com.worklight.wlclient.api.WLResourceRequest;
 import com.worklight.wlclient.api.WLResponse;
+import com.worklight.wlclient.api.WLResponseListener;
 
+
+import java.net.URI;
 
 import rx.Observable;
-import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 
 import static com.ibm.mil.readyapps.telco.utils.LoginActivity.credentials;
@@ -106,20 +108,28 @@ public class BasePlanModelImpl implements BasePlanModel {
 
         }
 
-        CafeJava.invokeProcedure(new JavaProcedureInvoker.Builder("TelcoUserAdapter", "users/"+userid)
-                .httpMethod(JavaProcedureInvoker.PUT).build())
-                .subscribe(new Action1<WLResponse>() {
-                    @Override
-                    public void call(WLResponse wlResponse) {
-                        Log.i("BasePlanModelImpl", BasePlanModelImpl.class.getName() + " " + wlResponse
-                                .getResponseText());
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        Log.i("BasePlanModelImpl", "UPDATE FAILED");
-                    }
-                });
+
+        try {
+
+            URI uri = new URI("adapters/TelcoUserAdapter/users/" + userid);
+            WLResourceRequest request = new WLResourceRequest(uri, WLResourceRequest.GET);
+            request.send(new WLResponseListener(){
+
+                public void onSuccess(WLResponse response) {
+                    Log.i("BasePlanModelImpl", BasePlanModelImpl.class.getName() + " " + response
+                            .getResponseText());
+
+                }
+                public void onFailure(WLFailResponse response) {
+                    Log.i("BasePlanModelImpl", "UPDATE FAILED");
+                }
+
+            });
+
+        }
+        catch(Exception e) {
+
+        }
     }
 
 }

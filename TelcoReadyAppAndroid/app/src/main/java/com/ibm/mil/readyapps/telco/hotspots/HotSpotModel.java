@@ -12,8 +12,7 @@ import java.util.List;
 import rx.Observable;
 
 public interface HotSpotModel {
-    /** Generates a stream of HotSpots based on the location passed in */
-    Observable<HotSpot> getHotSpots(Location location);
+
 
     /** Annotates an existing list of HotSpots based on the given location without requiring
      * an internet connection. The newly annotated list is generated as a stream. */

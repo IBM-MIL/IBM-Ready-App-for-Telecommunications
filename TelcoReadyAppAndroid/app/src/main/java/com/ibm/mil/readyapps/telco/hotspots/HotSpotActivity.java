@@ -55,14 +55,11 @@ import com.worklight.wlclient.api.WLResponseListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 import butterknife.ButterKnife;
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -70,7 +67,7 @@ import rx.Observable;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
 
-import static android.R.attr.path;
+
 import static com.ibm.mil.readyapps.telco.utils.LoginActivity.credentials;
 
 public class HotSpotActivity extends AppCompatActivity implements HotSpotView, OnMapReadyCallback,LocationListener {
@@ -194,10 +191,11 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
                 // notify subscriber (presenter) that a new marker was selected
                 // this will cause the presenter to fetch the detailed data for the hotspot
                 //  markerPublisher.onNext(marker.getPosition());
-                for(int i=0;i<hotSpots.size();i++){
 
-                    HotSpot newHotSpot = hotSpots.get(i);
-                    if (marker.getPosition().latitude == newHotSpot.getLatitude() && marker.getPosition().longitude == newHotSpot.getLongitude())
+                    for (HotSpot newHotSpot : hotSpots) {
+
+                    if (marker.getPosition().latitude == newHotSpot.getLatitude() &&
+                            marker.getPosition().longitude == newHotSpot.getLongitude())
                     {
 
                         showHotSpotDetails(newHotSpot);
@@ -236,13 +234,15 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
             request.setQueryParameter("lat", Double.toString(userLocation.getLatitude()));
             request.setQueryParameter("lon", Double.toString(userLocation.getLongitude()));
 
-           request.send(new WLResponseListener(){
+            request.send(new WLResponseListener(){
                 public void onSuccess(WLResponse response) {
                     try{
                         String responseJson = response.getResponseText();
                         JSONArray jsonArray = new JSONArray(responseJson);
                         HotSpotTransformer transformer = new HotSpotTransformer(geocoder, HotSpotActivity.this.userLocation);
-                       // final List<HotSpot> hotSpots = new ArrayList<HotSpot>();
+
+                        // Convert the adapter JSON response to HotSpot
+
                         for(int i=0;i<jsonArray.length();i++){
                             JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                             HotSpot hotSpot = new HotSpot();
@@ -347,8 +347,8 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
                 showHotSpotDetails(hotSpot);
                 marker.setIcon(activePin);
                 marker.setAnchor(0.5f, 1.0f);
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10.0f));
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15.0f));
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 5.0f));
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 10.0f));
             }
         }
 

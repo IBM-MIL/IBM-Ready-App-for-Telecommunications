@@ -51,8 +51,6 @@ dependencies {
             ext: 'aar',
             transitive: true
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':cafejava')
-
     // Testing dependencies
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
     androidTestCompile 'com.android.support.test:runner:0.3'
