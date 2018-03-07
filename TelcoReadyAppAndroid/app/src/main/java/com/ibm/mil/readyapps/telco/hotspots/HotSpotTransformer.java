@@ -55,14 +55,14 @@ class HotSpotTransformer implements Observable.Transformer<HotSpot, HotSpot> {
         });
     }
 
-    private HotSpot calculateDistance(HotSpot hotSpot) {
+    public HotSpot calculateDistance(HotSpot hotSpot) {
         Location hotSpotLocation = MapUtils.convertLatLng(hotSpot.getLatitude(),
                 hotSpot.getLongitude());
         hotSpot.setDistanceAway(MapUtils.distanceInKilometers(userLocation, hotSpotLocation));
         return hotSpot;
     }
 
-    private HotSpot obtainAddress(HotSpot hotSpot) {
+    public HotSpot obtainAddress(HotSpot hotSpot) {
         if (geocoder != null) {
             try {
                 List<Address> addresses = geocoder.getFromLocation(hotSpot.getLatitude(),

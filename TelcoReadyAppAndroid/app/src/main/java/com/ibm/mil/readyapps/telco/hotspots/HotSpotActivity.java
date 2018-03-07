@@ -30,6 +30,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,15 +42,24 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ibm.mil.readyapps.telco.R;
-import com.ibm.mil.readyapps.telco.activities.MainActivity;
 import com.ibm.mil.readyapps.telco.analytics.GestureListener;
 import com.ibm.mil.readyapps.telco.utils.JsonUtils;
 import com.ibm.mil.readyapps.telco.utils.MapUtils;
 import com.ibm.mil.readyapps.telco.utils.RxUtils;
 import com.ibm.mil.readyapps.telco.utils.Utils;
 import com.lsjwzh.widget.materialloadingprogressbar.CircleProgressBar;
+import com.worklight.wlclient.api.WLResourceRequest;
+import com.worklight.wlclient.api.WLResponse;
+import com.worklight.wlclient.api.WLFailResponse;
+import com.worklight.wlclient.api.WLResponseListener;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -59,6 +69,9 @@ import butterknife.OnClick;
 import rx.Observable;
 import rx.functions.Action1;
 import rx.subjects.PublishSubject;
+
+import static android.R.attr.path;
+import static com.ibm.mil.readyapps.telco.utils.LoginActivity.credentials;
 
 public class HotSpotActivity extends AppCompatActivity implements HotSpotView, OnMapReadyCallback,LocationListener {
     private static final LatLng DEFAULT_LOCATION = new LatLng(35.913436, -78.858730);
@@ -88,6 +101,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
     private BitmapDescriptor defaultPin;
     private Context mcontext;
     Location location,userLocation;
+    final List<HotSpot> hotSpots = new ArrayList<HotSpot>();
 
 
     private static SpannableString spanSuffix(String text, String suffix, Object... spans) {
@@ -146,19 +160,26 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
     }
 
     @Override
     public void onMapReady(GoogleMap map) {
         this.map = map;
 
+
         activePin = BitmapDescriptorFactory.fromResource(R.drawable.pin);
         defaultPin = BitmapDescriptorFactory.fromResource(R.drawable.dot);
+        try {
+            map.setMyLocationEnabled(true);
+        }
+        catch(SecurityException e) {
 
-       // map.setMyLocationEnabled(false);
-        map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.getUiSettings().setMapToolbarEnabled(false);
-        map.getUiSettings().setCompassEnabled(false);
+        }
+        map.getUiSettings().setMyLocationButtonEnabled(true);
+        map.getUiSettings().setMapToolbarEnabled(true);
+        map.getUiSettings().setCompassEnabled(true);
 
         // have presenter watch for marker clicks
         final PublishSubject<LatLng> markerPublisher = PublishSubject.create();
@@ -172,38 +193,93 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
 
                 // notify subscriber (presenter) that a new marker was selected
                 // this will cause the presenter to fetch the detailed data for the hotspot
-                markerPublisher.onNext(marker.getPosition());
+                //  markerPublisher.onNext(marker.getPosition());
+                for(int i=0;i<hotSpots.size();i++){
 
-                // reset marker icon to dot
-                if (currentMarker != null) {
-                    currentMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.dot));
-                    currentMarker.setAnchor(0.5f, 0.5f);
+                    HotSpot newHotSpot = hotSpots.get(i);
+                    if (marker.getPosition().latitude == newHotSpot.getLatitude() && marker.getPosition().longitude == newHotSpot.getLongitude())
+                    {
+
+                        showHotSpotDetails(newHotSpot);
+
+                        // reset marker icon to dot
+                        if (currentMarker != null) {
+                            currentMarker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.dot));
+                            currentMarker.setAnchor(0.5f, 0.5f);
+                        }
+
+                        marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
+                        marker.setAnchor(0.5f, 1.0f);
+                        currentMarker = marker;
+                        break;
+                    }
+
                 }
-
-                marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
-                marker.setAnchor(0.5f, 1.0f);
-                currentMarker = marker;
-
-
 
                 return false;
             }
         });
 
-     //  initUserMarker();
+
         userLocation = getLocation();
     }
 
-    private void useOnlineMode(final Location userLocation) {
+    private void useOnlineMode(Location userLocation) {
         final Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
-        presenter.getOnlineHotSpots(geocoder, userLocation)
-                .compose(hotSpotTransformer())
-                .subscribe(hotSpotOnNext(), new Action1<Throwable>() {
-                    @Override public void call(Throwable throwable) {
-                        useOfflineMode(userLocation, geocoder);
+
+        try {
+            String userid = credentials.getString("username");
+            URI uri = new URI("adapters/CloudantGeoAdapter/users/"+userid+"/wifi");
+            WLResourceRequest request = new WLResourceRequest(uri, WLResourceRequest.GET);
+
+            request.setQueryParameter("lat", Double.toString(userLocation.getLatitude()));
+            request.setQueryParameter("lon", Double.toString(userLocation.getLongitude()));
+
+           request.send(new WLResponseListener(){
+                public void onSuccess(WLResponse response) {
+                    try{
+                        String responseJson = response.getResponseText();
+                        JSONArray jsonArray = new JSONArray(responseJson);
+                        HotSpotTransformer transformer = new HotSpotTransformer(geocoder, HotSpotActivity.this.userLocation);
+                       // final List<HotSpot> hotSpots = new ArrayList<HotSpot>();
+                        for(int i=0;i<jsonArray.length();i++){
+                            JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+                            HotSpot hotSpot = new HotSpot();
+                            hotSpot.setLatitude(jsonObject.getDouble("latitude"));
+                            hotSpot.setLongitude(jsonObject.getDouble("longitude"));
+                            transformer.obtainAddress(hotSpot);
+                            transformer.calculateDistance(hotSpot);
+                            hotSpot.setDownloadSpeed(jsonObject.getInt("downloadSpeed"));
+                            hotSpot.setConnections(jsonObject.getInt("connections"));
+                            hotSpot.setSignInRequired(jsonObject.getBoolean("signInRequired"));
+                            hotSpot.setVerified(jsonObject.getBoolean("isVerified"));
+                            hotSpots.add(hotSpot);
+                        }
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                displayHotSpots(hotSpots);
+                            }
+                        });
+
+
+                    }catch (Exception exception){
+                        exception.printStackTrace();
                     }
-                });
+                    Log.i("Adapter Success", response.getResponseText());
+                }
+                public void onFailure(WLFailResponse response) {
+                    Log.i("Adapter Failure", response.getResponseText());
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
     private void useOfflineMode(Location userLocation, Geocoder geocoder) {
@@ -230,8 +306,6 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
     }
 
     private void initUserMarker() {
-       // LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-       // Location userLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
 
 
@@ -253,7 +327,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
             useOfflineMode(userLocation, null);
         }
 
-        //return MapUtils.convertLatLng(userMarker.getPosition());
+
     }
 
     private void displayHotSpots(List<HotSpot> hotSpots) {
@@ -274,11 +348,17 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
                 marker.setIcon(activePin);
                 marker.setAnchor(0.5f, 1.0f);
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 10.0f));
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 15.0f));
             }
         }
 
+
+
+
         contentArea.setVisibility(View.VISIBLE);
         fab.setVisibility(View.VISIBLE);
+
+
     }
 
     @Override public void showHotSpotDetails(HotSpot hotSpot) {

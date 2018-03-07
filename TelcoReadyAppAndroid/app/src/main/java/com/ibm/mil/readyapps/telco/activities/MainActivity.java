@@ -26,13 +26,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ibm.mil.cafejava.CafeJava;
-import com.ibm.mil.readyapps.telco.BuildConfig;
 import com.ibm.mil.readyapps.telco.R;
 import com.ibm.mil.readyapps.telco.analytics.AnalyticsCnsts;
 import com.ibm.mil.readyapps.telco.analytics.GestureListener;
@@ -51,18 +49,13 @@ import com.ibm.mil.readyapps.telco.recharge.RechargeActivity;
 import com.ibm.mil.readyapps.telco.utils.Currency;
 import com.ibm.mil.readyapps.telco.utils.FontCache;
 import com.ibm.mil.readyapps.telco.utils.PlanConstants;
-import com.ibm.mil.readyapps.telco.utils.TelcoChallengeHandler;
 import com.ibm.mil.readyapps.telco.utils.TwitterHelper;
-import com.ibm.mqa.MQA;
-import com.ibm.mqa.config.Configuration;
 import com.twitter.sdk.android.core.identity.TwitterAuthClient;
-import com.worklight.common.WLAnalytics;
-import com.worklight.wlclient.api.WLClient;
-import com.worklight.wlclient.api.WLResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 
 import butterknife.ButterKnife;
 import butterknife.Bind;
@@ -136,34 +129,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setImageHighlight(planTabImage);
         subscribeForToolbarCostUpdates();
 
-//        // configure and start MQA
-//        String MQA_KEY = getString(R.string.mqaKey);
-//        Configuration configuration = new Configuration.Builder(this)
-//                .withAPIKey(MQA_KEY)
-//                .withMode(MQA.Mode.MARKET)
-//                .withReportOnShakeEnabled(true)
-//                .build();
-//
-//        // Only want to start an MQA session when sending out a signed release build
-//        Boolean startMQA = !BuildConfig.DEBUG;
-//        if (startMQA) {
-//            MQA.startNewSession(this, configuration);
-//        }
-//
-//        // connect to MFP and register ChallengeHandler
-//        CafeJava.connect(this)
-//                .subscribe(new Action1<WLResponse>() {
-//                    @Override public void call(WLResponse wlResponse) {
-//                        Log.d(TAG, "Connection succeeded: " + wlResponse.getResponseText());
-//                        WLClient.getInstance().registerChallengeHandler(new TelcoChallengeHandler());
-//                    }
-//                }, new Action1<Throwable>() {
-//                    @Override public void call(Throwable throwable) {
-//                        Log.d(TAG, "Connection failed: " + throwable.getMessage());
-//                    }
-//                });
-//
-//        WLAnalytics.setContext(this);
+
     }
 
     @Override

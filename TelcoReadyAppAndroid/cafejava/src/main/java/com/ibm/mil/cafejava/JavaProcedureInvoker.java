@@ -7,8 +7,11 @@ package com.ibm.mil.cafejava;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.StringDef;
+import android.util.Log;
 
+import com.worklight.wlclient.api.WLFailResponse;
 import com.worklight.wlclient.api.WLResourceRequest;
+import com.worklight.wlclient.api.WLResponse;
 import com.worklight.wlclient.api.WLResponseListener;
 
 import java.lang.annotation.Retention;
@@ -61,8 +64,19 @@ public final class JavaProcedureInvoker implements ProcedureInvoker {
         try {
             URI uri = new URI("adapters/" + adapterName + buildPath(path, pathParams));
             WLResourceRequest request = new WLResourceRequest(uri, httpMethod);
-            request.setQueryParameters(queryParams);
-            request.send(pathParams, wlResponseListener);
+         //   request.setQueryParameters(queryParams);
+         //   request.send(pathParams, wlResponseListener);
+            request.send(wlResponseListener);
+
+        /*    request.send(new WLResponseListener(){
+                public void onSuccess(WLResponse response) {
+                    Log.i("Adapter Success", response.getResponseText());
+                }
+                public void onFailure(WLFailResponse response) {
+                    Log.i("Adapter Failure", response.getResponseText());
+                }
+            }); */
+
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }

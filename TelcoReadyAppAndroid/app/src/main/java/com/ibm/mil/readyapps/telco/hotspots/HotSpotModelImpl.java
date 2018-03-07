@@ -25,6 +25,8 @@ public class HotSpotModelImpl implements HotSpotModel {
     public Observable<HotSpot> getHotSpots(Location location) {
         TypeToken<List<HotSpot>> hotSpotsToken = new TypeToken<List<HotSpot>>() {
         };
+
+
         return CafeJava.invokeProcedure(new JavaProcedureInvoker
                 .Builder("CloudantGeoAdapter", "users/{user_id}/wifi")
                 .pathParam("user_id", "user1")

@@ -42,6 +42,10 @@ public class HotSpot {
         return isVerified;
     }
 
+    public void setVerified(boolean isVerified) {
+        this.isVerified = isVerified;
+    }
+
     public double getDistanceAway() {
         return distanceAway;
     }
@@ -70,12 +74,23 @@ public class HotSpot {
         return downloadSpeed;
     }
 
+    public void setDownloadSpeed(int downloadSpeed) {
+        this.downloadSpeed = downloadSpeed;
+    }
+
+
     public boolean getSignInRequired() {
         return signInRequired;
+    }
+    public void setSignInRequired(boolean signInRequired) {
+        this.signInRequired = signInRequired;
     }
 
     public int getConnections() {
         return connections;
+    }
+    public void setConnections(int connections) {
+        this.connections = connections;
     }
 
     @Override public String toString() {
