@@ -8,15 +8,20 @@
 package com.ibm.mil.readyapps.telco.adapters;
 
 import java.util.logging.Logger;
+
+
 import com.ibm.mfp.adapter.api.MFPJAXRSApplication;
 
 public class CloudantGeoAdapterApplication extends MFPJAXRSApplication{
 
 	static Logger logger = Logger.getLogger(CloudantGeoAdapterApplication.class.getName());
 	
+		
+	
 	@Override
 	protected void init() throws Exception {
-		logger.info("Adapter initialized!");
+		logger.info("Adapter initialized!");		
+		
 	}
 	
 	@Override

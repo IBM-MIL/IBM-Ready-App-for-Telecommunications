@@ -1,0 +1,10 @@
+com\ibm\mil\utils\JsonDataReader.class
+com\ibm\mil\utils\Constants.class
+com\ibm\mil\utils\JsonDataReader$1.class
+com\ibm\mil\readyapps\telco\models\WifiHotspotFlat.class
+com\ibm\mil\cloudant\geospatial\GeoJsonPoint.class
+com\ibm\mil\readyapps\telco\models\WifiHotspotProperties.class
+com\ibm\mil\readyapps\telco\models\WifiHotspot.class
+com\ibm\mil\utils\WifiHotspotUtils.class
+com\ibm\mil\readyapps\telco\adapters\CloudantGeoAdapterApplication.class
+com\ibm\mil\readyapps\telco\adapters\CloudantGeoAdapterResource.class

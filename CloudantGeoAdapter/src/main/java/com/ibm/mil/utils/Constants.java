@@ -12,10 +12,7 @@ package com.ibm.mil.utils;
 
 public class Constants {
 	
-	public final static String CLOUDANT_ACCOUNT = "505da9f7-eb2c-4dfe-a682-ee3855cbfc4c-bluemix.cloudant.com";
-	public final static String CLOUDANT_USERNAME = "505da9f7-eb2c-4dfe-a682-ee3855cbfc4c-bluemix";
-	public final static String CLOUDANT_PASSWORD = "ce834e11cb30072d2525ecc268dcb68b639740250dea8752a1cc7a4cf67bbb5f";
-	public final static String CLOUDANT_DB_NAME = "telco";
+
 	public final static String MAIN_DESIGN_DOC = "library";
 
 	public final static String DEFAULT_LOCALE = "DEFAULT_LOCALE";
