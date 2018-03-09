@@ -56,10 +56,7 @@
         <activity
             android:name=".termsconditions.TermsConditionsActivity" />
 
-        <!-- MQA activities -->
-        <activity android:name="com.ibm.mqa.ui.ProblemActivity" />
-        <activity android:name="com.ibm.mqa.ui.FeedbackActivity" />
-        <activity android:name="com.ibm.mqa.ui.ScreenshotEditorActivity" />
+
 
         <!-- Google Analytics for non-Google Play devices -->
         <receiver android:name="com.google.android.gms.analytics.AnalyticsReceiver"
@@ -72,9 +69,21 @@
                  android:enabled="true"
                  android:exported="false"/>
 
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAuxUi1ImZaP88rm4bkUeR_uIqQVmv29lU" />
+
+
+            <meta-data
+                  android:name="com.google.android.maps.v2.API_KEY"
+                  android:value="AIzaSyAuxUi1ImZaP88rm4bkUeR_uIqQVmv29lU" />
+
+            <meta-data
+                android:name="encodedTwitterKey"
+                android:value="aGRrNEJJRWFpcDV5dU9YVGtISVBzUFQ3Tg==" />
+
+            <meta-data
+                android:name="encodedTwitterSecret"
+                android:value="bHZubTJyWGFuSnhIc2VpMThjSjJPODFZN2tmZ3VLS1h4S0xEcWxNSW9BTmZNdTM3NUw=" />
+
+
     </application>
 
 </manifest>

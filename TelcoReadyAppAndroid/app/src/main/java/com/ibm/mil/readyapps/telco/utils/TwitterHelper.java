@@ -7,9 +7,12 @@ package com.ibm.mil.readyapps.telco.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 
 import com.ibm.mil.readyapps.telco.R;
+import com.ibm.mil.readyapps.telco.hotspots.HotSpotActivity;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
@@ -62,7 +65,7 @@ public final class TwitterHelper {
      *                          of authorization can be reported
      * @param status            the status to tweet
      */
-    public static void authorizeThenTweet(Activity activity, TwitterAuthClient twitterAuthClient, final String status) {
+    public static void authorizeThenTweet(final Activity activity, TwitterAuthClient twitterAuthClient, final String status) {
         twitterAuthClient.authorize(activity, new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
@@ -72,7 +75,9 @@ public final class TwitterHelper {
             @Override
             public void failure(TwitterException e) {
                 Log.d(TAG, "AUTHORIZATION FAILURE");
+
             }
+
         });
     }
 

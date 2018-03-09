@@ -7,6 +7,7 @@ package com.ibm.mil.readyapps.telco.hotspots;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.location.Geocoder;
@@ -18,6 +19,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.SpannableString;
@@ -222,7 +224,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
         userLocation = getLocation();
     }
 
-    private void useOnlineMode(Location userLocation) {
+    private void useOnlineMode(final Location userLocation) {
         final Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
 
@@ -239,7 +241,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
                     try{
                         String responseJson = response.getResponseText();
                         JSONArray jsonArray = new JSONArray(responseJson);
-                        HotSpotTransformer transformer = new HotSpotTransformer(geocoder, HotSpotActivity.this.userLocation);
+                        HotSpotTransformer transformer = new HotSpotTransformer(geocoder, userLocation);
 
                         // Convert the adapter JSON response to HotSpot
 
@@ -270,7 +272,11 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
                     Log.i("Adapter Success", response.getResponseText());
                 }
                 public void onFailure(WLFailResponse response) {
-                    Log.i("Adapter Failure", response.getResponseText());
+                    Log.i("Adapter Failure", response.getErrorMsg());
+                    // display alert message
+                    alertMessage("Could not retrieve data from HotSpots DB, working in offline mode");
+                    // invoke offlinemode
+                    useOfflineMode(userLocation,geocoder);
                 }
             });
 
@@ -324,6 +330,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
         if (Utils.isConnected(this)) {
             useOnlineMode(userLocation);
         } else {
+            alertMessage("No network connection, working in offline mode");
             useOfflineMode(userLocation, null);
         }
 
@@ -333,6 +340,7 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
     private void displayHotSpots(List<HotSpot> hotSpots) {
         for (int i = 0, size = hotSpots.size(); i < size; i++) {
             HotSpot hotSpot = hotSpots.get(i);
+
             LatLng location = new LatLng(hotSpot.getLatitude(), hotSpot.getLongitude());
 
             Marker marker = map.addMarker(new MarkerOptions()
@@ -351,9 +359,6 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
                 map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 10.0f));
             }
         }
-
-
-
 
         contentArea.setVisibility(View.VISIBLE);
         fab.setVisibility(View.VISIBLE);
@@ -503,6 +508,24 @@ public class HotSpotActivity extends AppCompatActivity implements HotSpotView, O
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    public  void alertMessage(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                AlertDialog alertDialog = new AlertDialog.Builder(HotSpotActivity.this).create();
+                alertDialog.setTitle("Alert");
+                alertDialog.setMessage(message);
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+            }
+        });
     }
 
 

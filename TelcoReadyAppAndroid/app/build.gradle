@@ -13,7 +13,7 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
-buildDir = "C:/tmp/${rootProject.name}/${project.name}"
+
 
 android {
     compileSdkVersion 24
