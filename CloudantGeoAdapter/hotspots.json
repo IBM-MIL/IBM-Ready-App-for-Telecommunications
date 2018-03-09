@@ -1,0 +1,163 @@
+[{
+	"_id": "10001",
+	"geometry": {
+		"coordinates": [10.1123,
+		10.2123],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 1",
+		"isVerified": false,
+		"downloadSpeed": 20,
+		"signInRequired": true,
+		"connections": 15
+	},
+	"type": "Feature"
+},{
+	"_id": "10002",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 2",
+		"isVerified": true,
+		"downloadSpeed": 3,
+		"signInRequired": false,
+		"connections": 5
+	},
+	"type": "Feature"
+},{
+	"_id": "10003",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 3",
+		"isVerified": false,
+		"downloadSpeed": 100,
+		"signInRequired": false,
+		"connections": 12
+	},
+	"type": "Feature"
+},{
+	"_id": "10004",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 4",
+		"isVerified": true,
+		"downloadSpeed": 20,
+		"signInRequired": true,
+		"connections": 2
+	},
+	"type": "Feature"
+},{
+	"_id": "10005",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 5",
+		"isVerified": true,
+		"downloadSpeed": 5,
+		"signInRequired": false,
+		"connections": 7
+	},
+	"type": "Feature"
+},{
+	"_id": "10006",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 6",
+		"isVerified": false,
+		"downloadSpeed": 10,
+		"signInRequired": true,
+		"connections": 3
+	},
+	"type": "Feature"
+},{
+	"_id": "10007",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 7",
+		"isVerified": false,
+		"downloadSpeed": 40,
+		"signInRequired": false,
+		"connections": 2
+	},
+	"type": "Feature"
+},{
+	"_id": "10008",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 8",
+		"isVerified": true,
+		"downloadSpeed": 5,
+		"signInRequired": true,
+		"connections": 11
+	},
+	"type": "Feature"
+},{
+	"_id": "10009",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 9",
+		"isVerified": true,
+		"downloadSpeed": 15,
+		"signInRequired": false,
+		"connections": 9
+	},
+	"type": "Feature"
+},{
+	"_id": "10010",
+	"geometry": {
+		"coordinates": [10.1,
+		10.2],
+		"type": "Point"
+	},
+	"properties": {
+		"subtype": "wifihotspot",
+		"name": "Wifi Hotspot 10",
+		"isVerified": false,
+		"downloadSpeed": 40,
+		"signInRequired": true,
+		"connections": 13
+	},
+	"type": "Feature"
+}]
+
+	
