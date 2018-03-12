@@ -21,7 +21,6 @@ import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -49,8 +48,7 @@ import com.ibm.mil.readyapps.telco.recharge.RechargeActivity;
 import com.ibm.mil.readyapps.telco.utils.Currency;
 import com.ibm.mil.readyapps.telco.utils.FontCache;
 import com.ibm.mil.readyapps.telco.utils.PlanConstants;
-import com.ibm.mil.readyapps.telco.utils.TwitterHelper;
-import com.twitter.sdk.android.core.identity.TwitterAuthClient;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -89,7 +87,6 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     @Bind(R.id.text_tab_image) ImageView textTabImage;
     private MyPlanPresenter myPlanPresenter;
     private Intent rechargeIntent;
-    private TwitterAuthClient twitterAuthClient;
     private ViewPagerAdapter pagerAdapter;
 
     /**
@@ -107,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
         setSupportActionBar(toolbar);
         tabImages = Arrays.asList(planTabImage, dataTabImage, talkTabImage, textTabImage);
         rechargeIntent = new Intent(MainActivity.this, RechargeActivity.class);
-        twitterAuthClient = new TwitterAuthClient();
+
 
         pagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addTabFragment(new TabFragment(getString(R.string.my_plan), new MyPlanFragment()));
@@ -396,31 +393,24 @@ public class MainActivity extends AppCompatActivity implements TabLayout.OnTabSe
     }
 
     /**
-     * Update user's Twitter status if already granted the app access,
-     * or ask for access and then Tweet (if access granted) otherwise.
+     *
+     * share user status through social media
      *
      * @param status the Twitter status update for the user
      */
     public void tryToTweet(final String status) {
-        if (TwitterHelper.alreadyAuthorized()) {
-            TwitterHelper.tweet(status);
-        } else {
-            TwitterHelper.authorizeThenTweet(this, twitterAuthClient, status);
-        }
+       
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, status);
+        sendIntent.setType("text/plain");
+        startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.send_to)));
+
+
     }
 
-    /**
-     * Needed by Twitter SDK to callback after asking for authorization of app.
-     *
-     * @param requestCode the type of request
-     * @param resultCode the result of the authorization
-     * @param data any data attached to authorization
-     */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        twitterAuthClient.onActivityResult(requestCode, resultCode, data);
-    }
+
 
     /**
      * Set up the ViewPager with Fragments

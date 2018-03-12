@@ -5,12 +5,9 @@ import android.app.Application;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 import com.ibm.mil.readyapps.telco.utils.TelcoChallengeHandler;
-import com.ibm.mil.readyapps.telco.utils.TwitterHelper;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.worklight.wlclient.api.WLClient;
 
-import io.fabric.sdk.android.Fabric;
+
 
 public class TelcoApplication extends Application {
 
@@ -19,11 +16,6 @@ public class TelcoApplication extends Application {
 
     @Override public void onCreate() {
         super.onCreate();
-
-        String twitterKey = TwitterHelper.getKey(getApplicationContext());
-        String twitterSecret = TwitterHelper.getSecret(getApplicationContext());
-        TwitterAuthConfig authConfig = new TwitterAuthConfig(twitterKey, twitterSecret);
-        Fabric.with(this, new Twitter(authConfig));
 
         analytics = GoogleAnalytics.getInstance(this);
         String analyticsKey = getString(R.string.analyticsKey);

@@ -15,9 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
         android:src="@drawable/onboarding_xxhdpi_04"
-        tools:ignore="ContentDescription"
-        />
+        tools:ignore="ContentDescription" />
 
     <com.ibm.mil.readyapps.telco.views.RobotoTextView
         style="@style/WalkthroughText"

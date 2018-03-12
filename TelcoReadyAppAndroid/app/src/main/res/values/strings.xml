@@ -64,6 +64,7 @@
     <string name="card_remove">REMOVE</string>
     <string name="card_cost">$5.00</string>
     <string name="card_share">SHARE</string>
+    <string name="send_to">Share with</string>
     <string name="card_tell_friends">Tell Your Friends</string>
     <string name="you_added">You added</string>
     <string name="to_plan">to your plan this month</string>

@@ -11,17 +11,18 @@
     android:layout_height="match_parent"
     android:background="@color/indigo">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/onboarding_xxhdpi_06"
-        tools:ignore="ContentDescription"
-        />
-
     <com.ibm.mil.readyapps.telco.views.RobotoTextView
         style="@style/WalkthroughText"
         android:text="@string/notification_intro"
         />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/colorPrimary"
+        android:src="@drawable/onboarding_xxhdpi_06"
+        tools:ignore="ContentDescription" />
 
 </FrameLayout>

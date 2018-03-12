@@ -25,58 +25,72 @@ limitations under the License.
     tools:context=".utils.LoginActivity">
 
     <EditText
+        android:id="@+id/usernameInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/usernameInput"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
+        android:hint="Username"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/editText4"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:hint="Username" />
+        android:layout_toEndOf="@+id/remainingAttempts" />
 
     <EditText
+        android:id="@+id/passwordInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/passwordInput"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_marginTop="14dp"
         android:layout_below="@+id/usernameInput"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/usernameInput"
-        android:layout_alignEnd="@+id/usernameInput"
-        android:hint="Password" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
+        android:id="@+id/login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:id="@+id/login"
+        android:layout_marginTop="15dp"
         android:layout_below="@+id/passwordInput"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/remainingAttempts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/passwordInput"
-        android:layout_alignEnd="@+id/passwordInput" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/remainingAttempts"
-        android:textColor="@color/colorError"
-        android:textSize="18dp"
         android:layout_below="@+id/login"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:textColor="@color/colorError"
+        android:textSize="18dp" />
 
     <TextView
+        android:id="@+id/errorMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/errorMsg"
-        android:textColor="@color/colorError"
-        android:textSize="18dp"
-        android:layout_below="@+id/remainingAttempts"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/remainingAttempts"
+        android:textColor="@color/colorError"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="57dp"
+        android:backgroundTint="@color/transparent_white"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="ACME Wireless"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

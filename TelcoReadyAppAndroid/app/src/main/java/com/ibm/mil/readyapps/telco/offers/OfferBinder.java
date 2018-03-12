@@ -301,7 +301,6 @@ public class OfferBinder extends DataBinder<OfferBinder.OfferViewHolder> {
     private void transformToShareCard() {
         Offer copyPlaceholderOffer = new Offer(offerToAccept);
         copyPlaceholderOffer.setShareCard();
-        copyPlaceholderOffer.setCardIcon(R.drawable.twitter);
         copyPlaceholderOffer.setTitle(context.getString(R.string.card_tell_friends));
         copyPlaceholderOffer.setBody(context.getString(R.string.card_share_body));
         copyPlaceholderOffer.setCostZero();
