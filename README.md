@@ -6,6 +6,22 @@
 IBM Ready App for Telecommunications demonstrates a new genre of mobile service provider where plans are controlled by the end user and not limited to a few choices. These dynamic service providers are starting to emerge all around the world. The app empowers the customer to control their mobile voice, text, and data plan while empowering the service provider to provide the right offers at the right time.
 Please visit this [blog](https://developer.ibm.com/code/open/projects/ibm-ready-app-for-telecommunications/) for details on the business case.
 
+### IBM Products
+
+IBM Ready App for Telecommunication is made great via
+
+- [IBM Cloud Mobile Foundation Service](https://www.ibm.com/cloud/mobile-foundation)
+
+- [IBM Cloud Mobile Analytics Service](https://www.ibm.com/cloud/mobile-analytics)
+
+- [IBM Cloudant Service](https://www.ibm.com/cloud/cloudant)
+ 
+### Getting Started
+
+The user can browse through the application by logging in using credentials where username and password are same (For ex john/john). The app has multiple tabs, one each for - data plan, text plan, message plan and talk plan. Customer can upgrade any of these plans individually. Also there is a quick recharge option available on each of these screens.
+Hotspot feature is available on the home screen of the app. This lists the 10 nearby hotspots of the Telco provider, and this data is retrieved using Cloudant Geospatial queries. Throughout the app analytics data is collected, which can be monitored by configuring IBM Cloud Mobile Analytics Service.
+
+    
 ### Setup Instructions
 
 1. HotSpot feature: 
@@ -50,8 +66,8 @@ Please visit this [blog](https://developer.ibm.com/code/open/projects/ibm-ready-
 	
 	- Get an API key by following the steps [here](https://developers.google.com/maps/documentation/javascript/get-api-key) and update the same in the AndroidManifest.xml
 	
-8.  Build and run the app on the
-9.   device.
+
+8.  Build and run the app on the device.
 
 9.  On the login screen, please enter the username and password same for example john/john for the authentication to work.
 10.  The app shows up the base plan and the additional packs that are available as add-on.
