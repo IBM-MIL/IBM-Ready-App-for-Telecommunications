@@ -19,8 +19,8 @@
 	<JAXRSApplicationClass>com.ibm.mil.readyapps.telco.adapters.CloudantGeoAdapterApplication</JAXRSApplicationClass>
 	
 	
-	<property name="CLOUDANT_ACCOUNT" displayName="Cloudant Account" defaultValue="505da9f7-eb2c-4dfe-a682-ee3855cbfc4c-bluemix.cloudant.com"  />
-	<property name="CLOUDANT_USERNAME" displayName="Cloudant Username" defaultValue="505da9f7-eb2c-4dfe-a682-ee3855cbfc4c-bluemix"  />
-	<property name="CLOUDANT_PASSWORD" displayName="Cloudant Password" defaultValue="ce834e11cb30072d2525ecc268dcb68b639740250dea8752a1cc7a4cf67bbb5f"  />
+	<property name="CLOUDANT_ACCOUNT" displayName="Cloudant Account" defaultValue=""  />
+	<property name="CLOUDANT_USERNAME" displayName="Cloudant Username" defaultValue=""  />
+	<property name="CLOUDANT_PASSWORD" displayName="Cloudant Password" defaultValue=""  />
 	<property name="CLOUDANT_DB_NAME" displayName="Cloudant DB Name" defaultValue="telco"  />
 </mfp:adapter>
